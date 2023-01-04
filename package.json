@@ -1,9 +1,15 @@
 {
   "scripts": {
-    "install": "(cd server && yarn install) && (yarn install);",
-    "prepare": "husky install"
+    "installServer": "(cd server && yarn install);",
+    "installClient":"(cd client && yarn install);",
+    "install":"concurrently \"yarn run installClient\" \"yarn run installServer\"",
+    "prepare": "husky install",
+    "client":"(cd client && yarn start)",
+    "server":"(cd server && yarn dev)",
+    "dev": "concurrently \"yarn run client\" \"yarn run server\""
   },
   "devDependencies": {
+    "concurrently": "^7.6.0",
     "husky": "^8.0.2"
   }
 }

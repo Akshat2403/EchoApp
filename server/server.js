@@ -5,7 +5,6 @@ import cookieParser from 'cookie-parser';
 
 import audioRoutes from './routes/audio.routes.js';
 import commentRoutes from './routes/comment.routes.js';
-import tagRoutes from './routes/tag.routes.js';
 import userRoutes from './routes/user.routes.js';
 
 const app = express();
@@ -23,7 +22,6 @@ app.use(cookieParser());
 // Routes
 app.use('/audio', audioRoutes);
 app.use('/comment', commentRoutes);
-app.use('/tag', tagRoutes);
 app.use('', userRoutes);
 
 app.use((err, req, res, next) => {
