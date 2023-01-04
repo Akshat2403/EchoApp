@@ -41,13 +41,13 @@ export const addAudio = async (req, res, next) => {
                         tag: {
                             connectOrCreate: {
                                 where: {
-                                    id:req.body.tag
+                                    id: req.body.tag,
                                 },
                                 createMany: {
-                                    ...req.body.tag
-                                }
-                            }
-                        }
+                                    ...req.body.tag,
+                                },
+                            },
+                        },
                     },
                 });
                 res.status(200).json(audio);
@@ -57,4 +57,3 @@ export const addAudio = async (req, res, next) => {
         next(err);
     }
 };
-
