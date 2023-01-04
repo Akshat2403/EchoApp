@@ -1,0 +1,55 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String    @id @default(uuid())
+  createdAt DateTime  @default(now())
+  email     String    @unique
+  name      String
+  password  String
+  comments  comment[]
+  audio     audio[]
+  tag       tag[]
+}
+
+model comment {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  editedAt  DateTime @updatedAt
+  timestamp Decimal
+  author    User     @relation(fields: [authorID], references: [id], onDelete: Cascade)
+  authorID  String
+  audio     audio    @relation(fields: [audioId], references: [id], onDelete: Cascade)
+  audioId   String
+}
+
+model audio {
+  id          String    @id @default(uuid())
+  createdAt   DateTime  @default(now())
+  editedAt    DateTime  @updatedAt
+  author      User      @relation(fields: [authorID], references: [id], onDelete: Cascade)
+  authorID    String
+  title       String
+  description String?
+  format      String
+  url         String
+  tag         tag[]
+  comment     comment[]
+}
+
+model tag {
+  id        String  @id @default(uuid())
+  name      String
+  createdBy User    @relation(fields: [userId], references: [id], onDelete: SetDefault)
+  audio     audio[]
+  userId    String  @default("anonymous")
+}

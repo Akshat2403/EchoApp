@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "install": "(cd server && yarn install) && (yarn install);",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "husky": "^8.0.2"
+  }
+}
