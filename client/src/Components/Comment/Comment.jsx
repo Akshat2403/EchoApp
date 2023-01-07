@@ -1,0 +1,36 @@
+import arrow from './arrow.png';
+import './Comment.css';
+import userlogo from '../Search/User-logo.png';
+const Comment = () => {
+    return (
+        <div className="Comment-main">
+            <div className="Comment-header">
+                <div className="Comment-box">
+                    <div className="Comment-heading">Comments</div>
+                    <div className="Comment-count">1.2K</div>
+                </div>
+                <div>
+                    <img src={arrow}></img>
+                </div>
+            </div>
+            <div>
+                <div className="Comment-card">
+                    <img className="user-image" src={userlogo}></img>
+                    <div className="Comment-info">
+                        <div className="Comment-name">
+                            <div className="Comment-user">Name</div>
+                            <div className="Comment-dot">.</div>
+                            <div className="Comment-time">1 min ago</div>
+                        </div>
+                        <div className="Comment-desc">
+                            xcjhbjcbjkhcnk.dsnzklcnzcxkln kjxbcv kjbxdm,n
+                            xc,mnkghxcjcjkcvnh
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default Comment;
