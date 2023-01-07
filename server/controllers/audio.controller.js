@@ -99,7 +99,7 @@ export const addAudioYT = async (req, res, next) => {
 };
 export const deleteAudio = async (req, res, next) => {
     const reqID = req.params.id;
-    const audio = await prisma.audio.findUnique({
+    const audio = await prisma.audio.delete({
         where: {
             id: reqID,
         },
