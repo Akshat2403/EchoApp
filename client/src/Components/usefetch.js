@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 const useFetch = (url) => {
     let [data, setData] = useState(null);
     let [ispending, setIspending] = useState(true);
@@ -6,15 +8,19 @@ const useFetch = (url) => {
     useEffect(() => {
         const abortCont = new AbortController();
 
-        fetch(url, { signal: abortCont.signal })
+        // axios.get(baseURL).then((response) => {
+        //     setPost(response.data);
+        //   });
+
+        axios(url, { signal: abortCont.signal })
+            // .then((response) => {
+            //     if (!response.ok) {
+            //         throw Error('could not fetch the data');
+            //     }
+            //     return response.json();
+            // })
             .then((response) => {
-                if (!response.ok) {
-                    throw Error('could not fetch the data');
-                }
-                return response.json();
-            })
-            .then((data) => {
-                setData(data);
+                setData(response.data);
                 setIspending(false);
                 setError(null);
             })

@@ -1,6 +1,8 @@
 import './login.css';
 import logo from './logo1.png';
 import { useState } from 'react';
+import axios from 'axios';
+
 const Signup = () => {
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
@@ -9,19 +11,20 @@ const Signup = () => {
     const [ispending, setIspending] = useState(false);
     const [confirm, setConfirm] = useState(true);
 
-    const handlesubmit = (e) => {
+    const handlesubmit = async (e) => {
+        console.log('working');
         setIspending(true);
         e.preventDefault();
 
         if (password === confirmpassword) {
             const User = { email, name, password };
-            fetch('url', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(User),
-            }).then(() => {
-                setIspending(false);
-            });
+            await axios
+                .post('/register', User, {
+                    headers: { 'Content-Type': 'application/json' },
+                })
+                .then(() => {
+                    setIspending(false);
+                });
         } else {
             setConfirm(false);
         }
@@ -69,7 +72,7 @@ const Signup = () => {
                             <div className="Login-heading">Password</div>
                             <div>
                                 <input
-                                    type="text"
+                                    type="password"
                                     className="Input-type2"
                                     required
                                     value={password}
@@ -83,7 +86,7 @@ const Signup = () => {
                             </div>
                             <div>
                                 <input
-                                    type="text"
+                                    type="password"
                                     className="Input-type2"
                                     required
                                     value={confirmpassword}
@@ -99,7 +102,10 @@ const Signup = () => {
                                 </div>
                             )}
                             <div className="Button-register">
-                                <button className="Input-type-login">
+                                <button
+                                    type="submit"
+                                    className="Input-type-login"
+                                >
                                     Register
                                 </button>
                             </div>
