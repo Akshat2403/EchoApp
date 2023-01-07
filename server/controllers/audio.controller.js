@@ -1,10 +1,11 @@
 import { PrismaClient } from '@prisma/client';
 import { uploadConverter, youtubeConverter } from '../utils/converter.js';
 import createError from '../utils/error.js';
+import { v4 as uuidv4 } from 'uuid';
 
 const prisma = new PrismaClient();
 
-const createAudio = async (req) => {
+const createAudio = async (req, audioName) => {
     const reqID = req.params.uid;
     const { tag, youtubeURL, ...details } = req.body;
     const audio = await prisma.audio.create({
@@ -14,6 +15,7 @@ const createAudio = async (req) => {
                     id: reqID,
                 },
             },
+            url: audioName,
             ...details,
         },
     });
@@ -75,8 +77,9 @@ export const getAudio = async (req, res, next) => {
 
 export const addAudio = async (req, res, next) => {
     try {
-        await uploadConverter(req.file.filename, 'mp3', 'output');
-        const audio = await createAudio(req);
+        const audioName = `${uuidv4()}.${req.body.format}`;
+        await uploadConverter(req.file.filename, req.body.format, audioName);
+        const audio = await createAudio(req, audioName);
         res.status(201).json(audio);
     } catch (err) {
         next(err);
@@ -85,13 +88,15 @@ export const addAudio = async (req, res, next) => {
 
 export const addAudioYT = async (req, res, next) => {
     try {
+        const audioName = `${uuidv4()}.${req.body.format}`;
+        const VideoSource = uuidv4();
         await youtubeConverter(
             req.body.youtubeURL,
             req.body.format,
-            'output',
-            'video.mp4'
+            audioName,
+            `${VideoSource}.mp4`
         );
-        const audio = await createAudio(req);
+        const audio = await createAudio(req, audioName);
         res.status(201).json(audio);
     } catch (err) {
         next(err);
