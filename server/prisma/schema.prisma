@@ -42,7 +42,7 @@ model audio {
   title       String
   description String?
   format      String
-  url         String  
+  url         String
   tags        tag[]
   comment     comment[]
 }
