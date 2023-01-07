@@ -65,7 +65,7 @@ export const getAudio = async (req, res, next) => {
             },
         });
         if (!audio) {
-            next(createError(404, 'Media Not Found'));
+            return next(createError(404, 'Media Not Found'));
         }
         return res.status(200).json(audio);
     } catch (err) {
