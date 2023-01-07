@@ -25,6 +25,7 @@ model comment {
   id        String   @id @default(uuid())
   createdAt DateTime @default(now())
   editedAt  DateTime @updatedAt
+  desc      String
   timestamp Decimal
   author    User     @relation(fields: [authorID], references: [id], onDelete: Cascade)
   authorID  String
@@ -41,14 +42,14 @@ model audio {
   title       String
   description String?
   format      String
-  url         String
-  tag         tag[]
+  url         String  
+  tags        tag[]
   comment     comment[]
 }
 
 model tag {
   id        String  @id @default(uuid())
-  name      String
+  name      String  @unique
   createdBy User    @relation(fields: [userId], references: [id], onDelete: SetDefault)
   audio     audio[]
   userId    String  @default("anonymous")
