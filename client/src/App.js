@@ -6,6 +6,7 @@ import Signup from './Components/Login/Signup';
 import Search from './Components/Search/Search';
 import Upload from './Components/Upload/Upload';
 import Profile from './Components/Profile/Profile';
+import Audioplayer from './Components/Audio-Player/Audio-Player';
 
 function App() {
     return (
@@ -18,6 +19,7 @@ function App() {
                         <Route path="/search" element={<Search />} />
                         <Route path="/upload" element={<Upload />} />
                         <Route path="/profile" element={<Profile />} />
+                        <Route path="/audioplayer" element={<Audioplayer />} />
                     </Routes>
                 </Router>
             </AuthProvider>
