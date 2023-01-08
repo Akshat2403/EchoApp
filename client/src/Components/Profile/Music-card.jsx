@@ -1,5 +1,4 @@
 import playerlogo from './Player-logo.png';
-import UseridContext from '../userid';
 
 import './Profile.css';
 const Card = ({ data }) => {

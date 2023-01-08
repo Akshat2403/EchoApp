@@ -1,33 +1,16 @@
 import './Profile.css';
-import UseridContext from '../userid';
-import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
-import { useEffect } from 'react';
-
 import yt from './yt.png';
 import userlarge from './User-large.png';
 
 import Navbar from '../Upload/Navbar';
 import Card from './Music-card';
-import axios from 'axios';
+
 import useFetch from '../usefetch';
 const Profile = () => {
     console.log(localStorage.getItem('user'));
     const User = JSON.parse(localStorage.getItem('user'));
-    // console.log(User.id)
-    // let [data,setData]=useState(null)
 
-    // useEffect(() => {const Userdata = async () => {
-    //     const response =await axios.get(`http://localhost:5000/${User.id}`)
-    //     // .then((response) => {
-    //     //     // console.log(response.data.email)
-    //     //     let data=response.data
-    //     //     return data;
-    //     // });
-    //     setData(response.data)
-
-    // }; }, []);
     let url = `http://localhost:5000/${User.id}`;
 
     const { data } = useFetch(url);
