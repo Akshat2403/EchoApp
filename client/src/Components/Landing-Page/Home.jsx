@@ -8,7 +8,7 @@ const Home = () => {
             <div className="Home">
                 <Navbar />
                 <div className="Homepage">
-                    <div className="Homepage-cd">hui</div>
+                    <div className="Homepage-cd"></div>
                     <div className="Homepage-search">
                         <div>
                             <div className="Homepage-search-title">ECHO</div>

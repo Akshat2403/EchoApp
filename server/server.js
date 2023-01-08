@@ -19,7 +19,13 @@ app.use(express.static('assets'));
 app.use(express.json());
 app.use(helmet());
 app.use(cookieParser());
-app.use(cors({ origin: '*', credentials: true, optionsSuccessStatus: 200 }));
+app.use(
+    cors({
+        origin: 'http://localhost:3000',
+        credentials: true,
+        optionsSuccessStatus: 200,
+    })
+);
 
 // Routes
 app.use('/audio', audioRoutes);

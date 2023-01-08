@@ -2,6 +2,7 @@ import './login.css';
 import logo from './logo1.png';
 import { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
     const [email, setEmail] = useState('');
@@ -10,6 +11,7 @@ const Signup = () => {
     const [confirmpassword, setConfirmPassword] = useState('');
     const [ispending, setIspending] = useState(false);
     const [confirm, setConfirm] = useState(true);
+    const navigate = useNavigate();
 
     const handlesubmit = async (e) => {
         setIspending(true);
@@ -18,12 +20,13 @@ const Signup = () => {
         if (password === confirmpassword) {
             const User = { email, name, password };
             await axios
-                .post('/register', User, {
+                .post('http://localhost:5000/register', User, {
                     headers: { 'Content-Type': 'application/json' },
                 })
                 .then((data) => {
                     setIspending(false);
                 });
+            navigate('/login');
         } else {
             setConfirm(false);
         }
