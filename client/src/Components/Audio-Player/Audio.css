@@ -1,3 +1,15 @@
+.Audio-player {
+    background-image: url('./Background-search.png');
+    background-repeat: no-repeat;
+    height: auto;
+    width: 100vw;
+    display: flex;
+    background-size: 100vw 500vh;
+    flex-direction: column;
+    min-height: 100vh;
+    align-items: center;
+    padding-bottom: 10vh;
+}
 .Comment-header {
     display: flex;
     justify-content: space-between;
@@ -16,7 +28,7 @@
 }
 .Comment-card {
     display: flex;
-    margin: 2vw;
+    margin: 2vh 3vw;
     padding: 1vw;
     gap: 1vw;
     background: linear-gradient(
@@ -27,6 +39,7 @@
     backdrop-filter: blur(30px);
     border-radius: 1.5vw;
 }
+
 .Comment-name {
     display: flex;
 }
@@ -45,6 +58,8 @@
         rgba(142, 132, 147, 0.121294) 63.33%
     );
     backdrop-filter: blur(30px);
+    width: 90vw;
+    margin-bottom: 10vh;
 }
 .Comment-user {
     color: white;
