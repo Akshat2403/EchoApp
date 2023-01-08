@@ -49,8 +49,17 @@ const Profile = () => {
             </div>
             <div className="Music-player">
                 <div className="Musicplayer-Heading">Your Audio</div>
-                <div className="Grid">
-                    <Card data={data} />
+                <div
+                    style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        width: '90vw',
+                    }}
+                >
+                    <div className="Grid">
+                        <Card data={data} />
+                    </div>
                 </div>
             </div>
         </div>
