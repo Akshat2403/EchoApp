@@ -1,7 +1,8 @@
 import arrow from './arrow.png';
 import './Audio.css';
-import userlogo from '../Search/User-logo.png';
+
 import Commentcard from './Comment-card';
+import Commenticon from './Comment-logo.png';
 const Comment = () => {
     return (
         <div className="Comment-main">
@@ -10,8 +11,19 @@ const Comment = () => {
                     <div className="Comment-heading">Comments</div>
                     <div className="Comment-count">1.2K</div>
                 </div>
-                <div>
-                    <img src={arrow}></img>
+                <div
+                    style={{
+                        display: 'flex',
+                        width: '10vw',
+                        justifyContent: 'space-between',
+                    }}
+                >
+                    <div>
+                        <img src={Commenticon} alt="" />
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                        <img src={arrow}></img>
+                    </div>
                 </div>
             </div>
             <div>
