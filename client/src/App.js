@@ -19,7 +19,7 @@ function App() {
                     <Route path="/search" element={<Search />} />
                     <Route path="/upload" element={<Upload />} />
                     <Route path="/profile" element={<Profile />} />
-                    <Route path="/audioplayer" element={<Audioplayer />} />
+                    <Route path="/audioplayer/:id" element={<Audioplayer />} />
                     <Route path="/home" element={<Home />} />
                 </Routes>
             </Router>

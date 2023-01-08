@@ -1,27 +1,35 @@
 import Audioimage from './Audio-image.png';
 import './Audioplay.css';
-import Audiocontroller from './AudioPlayer';
+import Audiocontroller from './AudioController';
 
-const Audioplay = () => {
+const Audioplay = (data) => {
+    const info = data.data;
+    if (data.data) {
+        console.log(info);
+    }
     return (
         <>
-            <div className="Audioplay-main">
-                <div className="Audioplay-image">
-                    <img src={Audioimage} alt="" />
-                </div>
-                <div className="Audioplay-details">
-                    <div className="Audioplay-details-playing">Now Playing</div>
-                    <div className="Audioplay-details-audioname">
-                        <div>Highway to hell</div>
-                        <div className="Audioplay-details-audiosinger">
-                            AC-DC
+            {info && (
+                <div className="Audioplay-main">
+                    <div className="Audioplay-image">
+                        <img src={Audioimage} alt="" />
+                    </div>
+                    <div className="Audioplay-details">
+                        <div className="Audioplay-details-playing">
+                            Now Playing
+                        </div>
+                        <div className="Audioplay-details-audioname">
+                            <div>{info.title}</div>
+                            <div className="Audioplay-details-audiosinger">
+                                {info.author.name}
+                            </div>
+                        </div>
+                        <div className="Audioplay-controller">
+                            <Audiocontroller data={info} />
                         </div>
                     </div>
-                    <div className="Audioplay-controller">
-                        <Audiocontroller />
-                    </div>
                 </div>
-            </div>
+            )}
         </>
     );
 };

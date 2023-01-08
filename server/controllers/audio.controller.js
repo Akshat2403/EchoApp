@@ -67,8 +67,13 @@ export const getAudio = async (req, res, next) => {
                 id: reqID,
             },
             include: {
-                comment: true,
+                comment: {
+                    include: {
+                        author: true,
+                    },
+                },
                 tags: true,
+                author: true,
             },
         });
         if (!audio) {
