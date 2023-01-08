@@ -1,0 +1,14 @@
+body {
+    margin: 0%;
+    background-color: black;
+}
+.item {
+    display: flex;
+
+    height: auto;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+
+    flex-direction: column;
+}
