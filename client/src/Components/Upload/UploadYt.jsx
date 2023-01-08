@@ -4,7 +4,7 @@ import playerlogo from './Player-logo.png';
 import './Upload.css';
 import axios from 'axios';
 
-const Upload = () => {
+const UploadYt = () => {
     const [uploadVideo, setUploadVideo] = useState();
     const [title, setTitle] = useState('');
     const [desc, setDesc] = useState('');
@@ -45,11 +45,11 @@ const Upload = () => {
                 <form onSubmit={handleSubmit}>
                     <div className="Upload-item">
                         <div className="Upload-item-details">
-                            <div className="title">
-                                <label htmlFor="title">Title</label>
+                            <div className="Yt-link">
+                                <label htmlFor="title">Youtube link</label>
                                 <input
                                     type="text"
-                                    name="title"
+                                    name="youtubeURL"
                                     onChange={(e) => {
                                         setTitle(e.target.value);
                                     }}
@@ -57,6 +57,7 @@ const Upload = () => {
                                     required
                                 />
                             </div>
+
                             <div className="Description">
                                 <label htmlFor="Description">Description</label>
                                 <textarea
@@ -97,34 +98,20 @@ const Upload = () => {
                                     <option value="aac">aac</option>
                                 </select>
                             </div>
+                            <div className="title1">
+                                <label htmlFor="title">Title</label>
+                                <input
+                                    type="text"
+                                    name="title"
+                                    onChange={(e) => {
+                                        setTitle(e.target.value);
+                                    }}
+                                    value={title}
+                                    required
+                                />
+                            </div>
                             <div className="submit-button">
                                 <button type="submit">Submit</button>{' '}
-                            </div>
-                        </div>
-
-                        <div className="Upload-item-link">
-                            <div className="Music-card">
-                                <img src={playerlogo} alt="" />
-                            </div>
-                            <div className="link">
-                                <input
-                                    type={'file'}
-                                    className="Upload-Input"
-                                    onChange={(e) => {
-                                        setUploadVideo(e.target.files[0]);
-                                    }}
-                                    name="uploadVideo"
-                                    id="uploadVideo"
-                                    accept="video/mp4,video/x-m4v,video/*"
-                                    hidden
-                                />
-                                <label htmlFor="uploadVideo">
-                                    {uploadVideo ? (
-                                        <span>Uploaded</span>
-                                    ) : (
-                                        <span>Upload &nbsp; &#8682;</span>
-                                    )}
-                                </label>
                             </div>
                         </div>
                     </div>
@@ -134,4 +121,4 @@ const Upload = () => {
     );
 };
 
-export default Upload;
+export default UploadYt;
