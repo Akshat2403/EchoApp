@@ -1,4 +1,5 @@
 import playerlogo from './Player-logo.png';
+import { Link } from 'react-router-dom';
 
 import './Profile.css';
 const Card = ({ data }) => {
@@ -7,7 +8,7 @@ const Card = ({ data }) => {
             <div>
                 {data &&
                     data.audio.map((audio) => (
-                        <div className="Music-song" key={audio.id}>
+                        <Link to="" className="Music-song" key={audio.id}>
                             <div className="Music-card">
                                 <img src={playerlogo} alt="" />
                             </div>
@@ -18,7 +19,7 @@ const Card = ({ data }) => {
                                     <div>3:42</div>
                                 </div>
                             </div>
-                        </div>
+                        </Link>
                     ))}
             </div>
         </>
