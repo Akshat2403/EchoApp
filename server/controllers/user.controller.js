@@ -83,5 +83,5 @@ export const getUser = async (req, res, next) => {
 };
 
 export const logout = (req, res, next) => {
-    res.cookie('access_token', '', { maxAge: 1 });
+    res.clearCookie('access_token').end();
 };

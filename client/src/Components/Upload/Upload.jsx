@@ -5,7 +5,7 @@ import './Upload.css';
 import axios from 'axios';
 
 const Upload = () => {
-    const User = JSON.parse(localStorage.getItem('user'));
+    const User = JSON.parse(sessionStorage.getItem('user'));
     const [uploadVideo, setUploadVideo] = useState();
     const [title, setTitle] = useState('');
     const [desc, setDesc] = useState('');
