@@ -13,6 +13,7 @@ const prisma = new PrismaClient();
 const createAudio = async (req, audioName) => {
     const reqID = req.params.uid;
     const { tag, youtubeURL, ...details } = req.body;
+    const tags = [...tag];
     const audio = await prisma.audio.create({
         data: {
             author: {
@@ -24,7 +25,7 @@ const createAudio = async (req, audioName) => {
             ...details,
         },
     });
-    if (tag) {
+    if (tags) {
         await Promise.all(
             tag.map(
                 async (ele) =>
@@ -90,6 +91,7 @@ export const addAudio = async (req, res, next) => {
         const audioName = `${uuidv4()}`;
         await uploadConverter(req.file.filename, req.body.format, audioName);
         const audio = await createAudio(req, audioName);
+        console.log('sadf');
         res.status(201).json(audio);
     } catch (err) {
         next(err);

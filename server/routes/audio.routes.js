@@ -14,7 +14,7 @@ const router = Router();
 router.post('/:uid', verifyuser, upload.single('uploadVideo'), addAudio);
 router.post('/:uid/youtube', verifyuser, addAudioYT);
 router.delete('/:uid/:id', verifyuser, deleteAudio);
-router.get('/', getAudioAll);
+router.get('', getAudioAll);
 router.get('/:id', getAudio);
 
 export default router;

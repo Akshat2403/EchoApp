@@ -1,8 +1,12 @@
-import Card from '../Profile/Music-card';
+import playerlogo from '../Profile/Player-logo.png';
+import { Link } from 'react-router-dom';
 import Navbar from '../Upload/Navbar';
 import './Home.css';
 import searchlogo from '../Search/search.png';
+import useFetch from '../usefetch';
 const Home = () => {
+    const { data } = useFetch('http://localhost:5000/audio');
+    console.log(data);
     return (
         <>
             <div className="Home">
@@ -28,7 +32,25 @@ const Home = () => {
                 </div>
                 <div className="Music-player">
                     <div className="Grid">
-                        <Card />
+                        {data &&
+                            data.map((audio) => (
+                                <Link
+                                    to=""
+                                    className="Music-song"
+                                    key={audio.id}
+                                >
+                                    <div className="Music-card">
+                                        <img src={playerlogo} alt="" />
+                                    </div>
+                                    <div className="Music-card-details">
+                                        <div>Highway to Hell</div>
+                                        <div className="Music-card-details-timing">
+                                            <div>AC-DC</div>
+                                            <div>3:42</div>
+                                        </div>
+                                    </div>
+                                </Link>
+                            ))}
                     </div>
                 </div>
             </div>

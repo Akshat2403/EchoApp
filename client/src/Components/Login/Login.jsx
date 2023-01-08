@@ -35,6 +35,7 @@ export const Login = () => {
                 JSON.stringify({ email, password }),
                 {
                     headers: { 'Content-Type': 'application/json' },
+                    withCredentials: 'include',
                 }
             );
             console.log(JSON.stringify(response?.data));
