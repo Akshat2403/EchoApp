@@ -30,7 +30,7 @@ body {
     flex-direction: column;
     align-items: center;
 }
-.Logo-section {
+.Search-Logo-section {
     width: 100vw;
     display: flex;
     align-items: center;
@@ -38,7 +38,7 @@ body {
     height: 48vh;
     margin-bottom: 5vh;
 }
-.Logo-section img {
+.Search-Logo-section img {
     width: 40vw;
     height: 40vw;
     max-width: 400px;
@@ -63,14 +63,29 @@ body {
 .Search-bar input:focus {
     outline: none;
 }
+
+.Search-button {
+    background: transparent;
+    padding: 0%;
+    margin: 0%;
+    border: none;
+    margin-top: -2vh;
+
+    position: absolute;
+}
+.Search-button img {
+    width: 30px;
+    margin-left: 49vw;
+    margin-top: -3vh;
+}
 @media screen and (max-width: 800px) {
-    .Logo-section img {
+    .Search-Logo-section img {
         width: 30vh;
         height: 30vh;
         max-width: 400px;
         max-height: 400px;
     }
-    .Logo-section {
+    .Search-Logo-section {
         height: 35vh;
         margin-bottom: 5vh;
     }
@@ -85,5 +100,10 @@ body {
         width: 70vw;
 
         font-size: 3vw;
+    }
+    .Search-button img {
+        width: 30px;
+        margin-left: 62vw;
+        margin-top: -3vh;
     }
 }

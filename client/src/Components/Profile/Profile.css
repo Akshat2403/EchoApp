@@ -1,0 +1,231 @@
+body {
+    margin: 0%;
+}
+.Heading-top {
+    text-align: center;
+    font-size: 1.4vw;
+    color: white;
+}
+.Navbar {
+    height: 12vh;
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 2vw;
+    padding-top: 2vh;
+    padding-right: 2vw;
+    box-sizing: border-box;
+}
+.Navbar img {
+    width: 6vh;
+    height: 6vh;
+}
+.Userprofile-page {
+    background-image: url('./Background-search.png');
+    background-repeat: no-repeat;
+    height: auto;
+    width: 100vw;
+    display: flex;
+    background-size: 100vw 500vh;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.User-img {
+    display: flex;
+    text-align: center;
+    font-size: 1.4vw;
+    color: white;
+
+    justify-content: space-between;
+}
+.User-img .div {
+    display: flex;
+    align-items: center;
+    height: 6vh;
+    margin-left: 3.5vw;
+}
+@media screen and (max-width: 800px) {
+    .User-img {
+        font-size: 2.7vw;
+    }
+    .Heading-top {
+        font-size: 2.7vw;
+    }
+}
+
+.Musicplayer-Heading {
+    display: flex;
+    width: 90vw;
+    font-size: 2.5vw;
+    color: #ffffff;
+    height: 5vh;
+}
+
+.Music-song {
+    height: 35vh;
+    width: 10vw;
+    background: #240e2d;
+    opacity: 0.81;
+    box-shadow: 20px 20px 40px rgba(0, 0, 0, 0.25);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1.5vh 1vw;
+    color: #ffffff;
+    box-sizing: border-box;
+    font-size: 1.5vw;
+    min-width: 200px;
+    margin: 2vh 4vw 2vh 0vw;
+}
+
+.Music-card {
+    background: #321f3a;
+    border-radius: 12px;
+    width: 8vw;
+    height: 12vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 150px;
+    min-height: 150px;
+}
+.Music-card img {
+    width: 5vw;
+    min-width: 100px;
+    min-height: 100px;
+
+    height: 5vw;
+}
+
+.Grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+}
+.User-profile {
+    display: flex;
+    width: 100vw;
+    height: 35vh;
+    padding: 0vh 5vw;
+    box-sizing: border-box;
+    align-items: center;
+    margin-bottom: 10vh;
+}
+.User-profile-img {
+    background: linear-gradient(
+        133.38deg,
+        #321f3a 18.42%,
+        rgba(77, 61, 85, 0.866965) 56.43%,
+        rgba(142, 132, 147, 0.551338) 75.05%,
+        rgba(255, 255, 255, 0) 107.56%
+    );
+    filter: drop-shadow(28px 28px 4px #190321);
+    width: 30vh;
+    height: 30vh;
+    margin-right: 4vw;
+}
+.User-profile-img img {
+    height: 100%;
+    width: 100%;
+}
+.Music-player {
+    display: flex;
+    flex-direction: column;
+
+    width: 100vw;
+    justify-content: space-evenly;
+    padding: 0vh 5vw;
+    box-sizing: border-box;
+}
+.User-profile-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 35vh;
+}
+
+.User-profile-details-Profile {
+    font-size: 2vw;
+    color: white;
+    margin-bottom: 2vh;
+}
+.User-profile-details-email {
+    font-size: 2vw;
+    color: #696969;
+    margin-bottom: 5vh;
+}
+.User-profile-details-Name {
+    font-size: 3vw;
+    color: white;
+    margin-bottom: 2vh;
+}
+.Music-card-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 12vh;
+}
+.Music-card-details-timing {
+    display: flex;
+    justify-content: space-between;
+}
+.User-profile-details-upload {
+    display: flex;
+}
+.User-profile-details-upload-video {
+    padding: 2vh 4vw;
+    box-sizing: border-box;
+    height: 7vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30px;
+    background: rgba(235, 219, 255, 0.34);
+    min-height: 40px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 2vw;
+    text-align: center;
+    color: #ffffff;
+    margin-right: 3vw;
+}
+.User-profile-details-upload-youtube {
+    padding: 2vh 4vw;
+    box-sizing: border-box;
+    height: 7vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30px;
+    background: rgba(235, 219, 255, 0.34);
+    min-height: 40px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 2vw;
+    text-align: center;
+    color: #ffffff;
+}
+@media screen and (max-width: 845px) {
+    .User-profile-img {
+        background: linear-gradient(
+            133.38deg,
+            #321f3a 18.42%,
+            rgba(77, 61, 85, 0.866965) 56.43%,
+            rgba(142, 132, 147, 0.551338) 75.05%,
+            rgba(255, 255, 255, 0) 107.56%
+        );
+        filter: drop-shadow(14px 14px 2px #190321);
+        width: 28vw;
+        height: 28vw;
+        margin-right: 4vw;
+    }
+
+    .User-profile-details-upload-video {
+        height: 5vh;
+    }
+    .User-profile-details-upload-youtube {
+        height: 5vh;
+    }
+}
