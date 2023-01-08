@@ -13,6 +13,7 @@
     "husky": "^8.0.2"
   },
   "dependencies": {
+    "react-icons": "^4.7.1",
     "react-router-dom": "6.6.1",
     "react-use-auth": "^2.1.0-14"
   }
