@@ -2,6 +2,8 @@ import './Profile.css';
 import UseridContext from '../userid';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 import yt from './yt.png';
 import userlarge from './User-large.png';
@@ -9,15 +11,30 @@ import userlarge from './User-large.png';
 import Navbar from '../Upload/Navbar';
 import Card from './Music-card';
 import axios from 'axios';
+import useFetch from '../usefetch';
 const Profile = () => {
-    const { userid } = useContext(UseridContext);
+    console.log(localStorage.getItem('user'));
+    const User = JSON.parse(localStorage.getItem('user'));
+    // console.log(User.id)
+    // let [data,setData]=useState(null)
 
-    const data = async () => {
-        await axios.get('http://localhost:4000/userid').then((response) => {
-            // console.log(response)
-            return response.data;
-        });
-    };
+    // useEffect(() => {const Userdata = async () => {
+    //     const response =await axios.get(`http://localhost:5000/${User.id}`)
+    //     // .then((response) => {
+    //     //     // console.log(response.data.email)
+    //     //     let data=response.data
+    //     //     return data;
+    //     // });
+    //     setData(response.data)
+
+    // }; }, []);
+    let url = `http://localhost:5000/${User.id}`;
+
+    const { data } = useFetch(url);
+
+    if (data) {
+        console.log(data);
+    }
 
     return (
         <div className="Userprofile-page">
@@ -29,12 +46,11 @@ const Profile = () => {
                 <div className="User-profile-details">
                     <div className="User-profile-details-Profile"> Profile</div>
                     <div className="User-profile-details-Name">
-                        Paridhi Baruah
+                        {data && <div>{data.name}</div>}
                     </div>
-                    <div className="User-profile-details-Edit">Edit</div>
                     <div className="User-profile-details-email">
                         {' '}
-                        {data.email}geetmanik2@gmail.com
+                        {data && <div>{data.email}</div>}
                     </div>
                     <div className="User-profile-details-upload">
                         <div className="User-profile-details-upload-video">
