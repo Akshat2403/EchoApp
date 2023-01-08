@@ -229,3 +229,6 @@ body {
         height: 5vh;
     }
 }
+a {
+    text-decoration: none;
+}
