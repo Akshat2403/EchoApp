@@ -29,8 +29,9 @@ const Profile = () => {
                 <div className="User-profile-details">
                     <div className="User-profile-details-Profile"> Profile</div>
                     <div className="User-profile-details-Name">
-                        {data.name}Paridhi Baruah
+                        Paridhi Baruah
                     </div>
+                    <div className="User-profile-details-Edit">Edit</div>
                     <div className="User-profile-details-email">
                         {' '}
                         {data.email}geetmanik2@gmail.com

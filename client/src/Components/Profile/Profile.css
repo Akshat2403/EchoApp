@@ -207,6 +207,18 @@ body {
     text-align: center;
     color: #ffffff;
 }
+.User-profile-details-box {
+    display: flex;
+    gap: 1.5vw;
+    align-items: flex-start;
+}
+.User-profile-details-Edit {
+    color: #d1b2f9;
+    box-sizing: border-box;
+    border-radius: 2.5vw;
+    border: 0.3vw solid #d1b2f9;
+    padding: 0.25vw 2.25vw 0.25vw 2.25vw;
+}
 @media screen and (max-width: 845px) {
     .User-profile-img {
         background: linear-gradient(

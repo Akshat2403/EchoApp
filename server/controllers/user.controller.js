@@ -59,9 +59,24 @@ export const register = async (req, res, next) => {
             },
         });
         const { password, ...otherDetails } = newUser;
-        console.log(newUser);
         res.status(201).json({ ...otherDetails });
     } catch (err) {
         next(err);
     }
+};
+
+export const getUser = async (req, res, next) => {
+    const reqID = req.params.uid;
+    const user = await prisma.user.findUnique({
+        where: {
+            id: reqID,
+        },
+        include: {
+            audio: true,
+        },
+    });
+    if (!user) {
+        return next(createError('404', 'Unable to fetch User'));
+    }
+    res.status(200).json(user);
 };

@@ -12,7 +12,6 @@ const Signup = () => {
     const [confirm, setConfirm] = useState(true);
 
     const handlesubmit = async (e) => {
-        console.log('working');
         setIspending(true);
         e.preventDefault();
 
@@ -22,7 +21,7 @@ const Signup = () => {
                 .post('/register', User, {
                     headers: { 'Content-Type': 'application/json' },
                 })
-                .then(() => {
+                .then((data) => {
                     setIspending(false);
                 });
         } else {
