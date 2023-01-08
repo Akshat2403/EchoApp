@@ -78,5 +78,10 @@ export const getUser = async (req, res, next) => {
     if (!user) {
         return next(createError('404', 'Unable to fetch User'));
     }
-    res.status(200).json(user);
+    const { password, ...details } = user;
+    res.status(200).json({ ...details });
+};
+
+export const logout = (req, res, next) => {
+    res.cookie('access_token', '', { maxAge: 1 });
 };

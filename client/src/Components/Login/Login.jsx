@@ -1,31 +1,17 @@
 import './login.css';
 import logo from './logo1.png';
-import { useRef, useState, useEffect, useContext } from 'react';
+import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-// import { useAuth } from 'react-use-auth';
-import AuthContext from '../auth';
-import UseridContext from '../userid';
+// import  useAuth from "./auth"
 import axios from 'axios';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 
 export const Login = () => {
-    //     const [user, setUser] = useState('')
-    //   const navigate = useNavigate()
-    //   const location = useLocation()
-    //   const auth = useAuth()
+    // const { setAuth } = useAuth();
 
-    //   const redirectPath = location.state?.path || '/'
-
-    //   const handleLogin = () => {
-    //     auth.login(user)
-    //     navigate(redirectPath, { replace: true })
-    //   }
-
-    const { setAuth } = useContext(AuthContext);
-    const { setUserid } = useContext(UseridContext);
-    const userRef = useRef();
-    const errRef = useRef();
     const navigate = useNavigate();
+    const location = useLocation();
+    // const from = location.state?.from?.pathname || "/";
 
     const [email, setUser] = useState('');
     const [password, setPwd] = useState('');
@@ -36,9 +22,9 @@ export const Login = () => {
     //     userRef.current.focus();
     // }, [])
 
-    useEffect(() => {
-        setErrMsg('');
-    }, [email, password]);
+    // useEffect(() => {
+    //     setErrMsg('');
+    // }, [user, pwd])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -51,29 +37,21 @@ export const Login = () => {
                     headers: { 'Content-Type': 'application/json' },
                 }
             );
-            const access_token = response?.data?.access_token;
-            const uid = response?.data?.id;
-            setAuth({ email, password, access_token });
-            setUserid({ uid });
+            console.log(JSON.stringify(response?.data));
+            if (response) {
+                localStorage.setItem('user', JSON.stringify(response?.data));
+            }
+            console.log(localStorage.getItem('user'));
+            const accessToken = response?.data?.access_Token;
+            const id = response?.data?.id;
             setUser('');
             setPwd('');
             setSuccess(true);
+            navigate('/profile');
         } catch (err) {
             setErrMsg(err.message);
-            // if (!err?.response) {
-            //     setErrMsg('No Server Response');
-            // } else if (err.response?.status === 400) {
-            //     setErrMsg('Missing Username or Password');
-            // } else if (err.response?.status === 401) {
-            //     setErrMsg('Unauthorized');
-            // } else {
-            //     setErrMsg('Login Failed');
-            // }
             // errRef.current.focus();
         }
-        // if(success){
-        //     navigate('/', { replace: true })
-        // }
     };
 
     return (
@@ -88,48 +66,56 @@ export const Login = () => {
                 <div className="Logo-section">
                     <img src={logo} alt="" />
                 </div>
-                <form onSubmit={handleSubmit}>
-                    <div className="Login-section">
-                        <div className="Login-section-data">
-                            <div className="Login-heading">Username</div>
-                            <div>
-                                <input
-                                    type="text"
-                                    className="Input-type"
-                                    onChange={(e) => setUser(e.target.value)}
-                                />
-                            </div>
-                            <div className="Login-heading"> Password</div>
-                            <div>
-                                <input
-                                    type="password"
-                                    className="Input-type"
-                                    onChange={(e) => setPwd(e.target.value)}
-                                />
-                            </div>
-                            <div className="Login-Button">
-                                <button className="Input-type-login">
-                                    Login
-                                </button>
-                                <div className="Register">
-                                    NO account?{' '}
-                                    <span>
-                                        {' '}
-                                        <Link
-                                            to="/Signup"
-                                            style={{
-                                                textDecoration: 'none',
-                                                color: '#a545c8',
-                                            }}
-                                        >
-                                            Register{' '}
-                                        </Link>
-                                    </span>
+                {!errMsg && (
+                    <form>
+                        <div className="Login-section">
+                            <div className="Login-section-data">
+                                <div className="Login-heading">Username</div>
+                                <div>
+                                    <input
+                                        type="text"
+                                        className="Input-type"
+                                        onChange={(e) =>
+                                            setUser(e.target.value)
+                                        }
+                                    />
+                                </div>
+                                <div className="Login-heading"> Password</div>
+                                <div>
+                                    <input
+                                        type="password"
+                                        className="Input-type"
+                                        onChange={(e) => setPwd(e.target.value)}
+                                    />
+                                </div>
+                                <div
+                                    className="Login-Button"
+                                    onClick={handleSubmit}
+                                >
+                                    <button className="Input-type-login">
+                                        Login
+                                    </button>
+                                    <div className="Register">
+                                        NO account?{' '}
+                                        <span>
+                                            {' '}
+                                            <Link
+                                                to="/Signup"
+                                                style={{
+                                                    textDecoration: 'none',
+                                                    color: '#a545c8',
+                                                }}
+                                            >
+                                                Register{' '}
+                                            </Link>
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                )}
+                {errMsg && <div className="err">{errMsg}</div>}
             </div>
         </>
     );
