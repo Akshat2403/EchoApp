@@ -77,7 +77,7 @@ export const getAudio = async (req, res, next) => {
 
 export const addAudio = async (req, res, next) => {
     try {
-        const audioName = `${uuidv4()}.${req.body.format}`;
+        const audioName = `${uuidv4()}`;
         await uploadConverter(req.file.filename, req.body.format, audioName);
         const audio = await createAudio(req, audioName);
         res.status(201).json(audio);
@@ -88,7 +88,7 @@ export const addAudio = async (req, res, next) => {
 
 export const addAudioYT = async (req, res, next) => {
     try {
-        const audioName = `${uuidv4()}.${req.body.format}`;
+        const audioName = `${uuidv4()}`;
         const VideoSource = uuidv4();
         await youtubeConverter(
             req.body.youtubeURL,
