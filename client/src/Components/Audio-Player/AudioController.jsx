@@ -1,12 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styles from '../styles/AudioPlayer.module.css';
-
 import { FaPlay } from 'react-icons/fa';
 import { FaPause } from 'react-icons/fa';
 
 import Backwardbtn from './Bkbutton.png';
 import Forwardbtn from './Forward.png';
-const Audiocontroller = () => {
+const Audiocontroller = (data) => {
+    const info = data.data;
+    // if (info) { console.log(data.data.url) }
+
     // state
     const [isPlaying, setIsPlaying] = useState(false);
     const [duration, setDuration] = useState(0);
@@ -74,52 +76,68 @@ const Audiocontroller = () => {
         progressBar.current.value = Number(progressBar.current.value + 5);
         changeRange();
     };
-
+    // const audio=useFetch(`http://localhost:5000/audio/${}`)
     return (
-        <div className={styles.audioPlayer}>
-            <audio ref={audioPlayer} src="" preload="metadata"></audio>
-            <div className={styles.audiobutton}>
-                <button className={styles.forwardBackward} onClick={backThirty}>
-                    <img src={Backwardbtn} alt="" />
-                </button>
-                <button onClick={togglePlayPause} className={styles.playPause}>
-                    {isPlaying ? (
-                        <FaPause />
-                    ) : (
-                        <FaPlay className={styles.play} />
-                    )}
-                </button>
-                <button
-                    className={styles.forwardBackward}
-                    onClick={forwardThirty}
-                >
-                    {' '}
-                    <img src={Forwardbtn} alt="" />
-                </button>
-            </div>
-            {/* current time */}
-            <div className={styles.progressbuttonmain}>
-                <div className={styles.currentTime}>
-                    {calculateTime(currentTime)}
-                </div>
+        <>
+            {info && (
+                <div className={styles.audioPlayer}>
+                    <audio
+                        ref={audioPlayer}
+                        src={`http://localhost:5000/audio/${info.url}.${info.format}`}
+                        preload="metadata"
+                    ></audio>
+                    <div className={styles.audiobutton}>
+                        <button
+                            className={styles.forwardBackward}
+                            onClick={backThirty}
+                        >
+                            <img src={Backwardbtn} alt="" />
+                        </button>
+                        <button
+                            onClick={togglePlayPause}
+                            className={styles.playPause}
+                        >
+                            {isPlaying ? (
+                                <FaPause />
+                            ) : (
+                                <FaPlay className={styles.play} />
+                            )}
+                        </button>
+                        <button
+                            className={styles.forwardBackward}
+                            onClick={forwardThirty}
+                        >
+                            {' '}
+                            <img src={Forwardbtn} alt="" />
+                        </button>
+                    </div>
+                    {/* current time */}
+                    <div className={styles.progressbuttonmain}>
+                        <div className={styles.currentTime}>
+                            {calculateTime(currentTime)}
+                        </div>
 
-                {/* progress bar */}
-                <div style={{ margin: '0.5vh 1vw 0.5vh 0.5vw' }}>
-                    <input
-                        type="range"
-                        className={styles.progressBar}
-                        defaultValue="0"
-                        ref={progressBar}
-                        onChange={changeRange}
-                    />
-                </div>
+                        {/* progress bar */}
+                        <div style={{ margin: '0.5vh 1vw 0.5vh 0.5vw' }}>
+                            <input
+                                type="range"
+                                className={styles.progressBar}
+                                defaultValue="0"
+                                ref={progressBar}
+                                onChange={changeRange}
+                            />
+                        </div>
 
-                {/* duration */}
-                <div className={styles.duration}>
-                    {duration && !isNaN(duration) && calculateTime(duration)}
+                        {/* duration */}
+                        <div className={styles.duration}>
+                            {duration &&
+                                !isNaN(duration) &&
+                                calculateTime(duration)}
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
+            )}
+        </>
     );
 };
 

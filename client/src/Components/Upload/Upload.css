@@ -74,15 +74,15 @@ body {
         rgba(255, 255, 255, 0) 107.56%
     );
     filter: drop-shadow(15px 15px 4px #190321);
-    width: 14vw;
-    height: 24vh;
+    width: 18vw !important;
+    height: 25vh !important;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 .Music-card img {
-    width: 9vw;
-    height: 9vw;
+    width: 12vw !important;
+    height: 12vw !important;
 }
 .link {
     color: white;
@@ -91,7 +91,8 @@ body {
     width: 22vw;
     height: 7vh;
     min-height: 30px;
-    max-height: 40px;
+    max-height: 50px;
+    padding: 0.5vh 0vw;
     background: rgba(183, 142, 236, 0.59);
     box-shadow: 19px 19px 4px rgba(0, 0, 0, 0.25);
     display: flex;
@@ -142,19 +143,25 @@ body {
 
         max-height: 30px;
     }
-    .Music-card {
-        width: 22vw;
-    }
-    .Music-card img {
-        width: 10vw;
-        height: 10vw;
-    }
 }
 .title {
     margin-bottom: 8vh;
 }
-
+.Yt-link {
+    margin-bottom: 8vh;
+}
 .title input {
+    height: 7vh;
+    max-height: 40px;
+}
+.title1 input {
+    height: 7vh;
+    max-height: 40px;
+}
+.title1 {
+    margin-bottom: 4vh;
+}
+.Yt-link input {
     height: 7vh;
     max-height: 40px;
 }
@@ -163,17 +170,46 @@ body {
 }
 .Description textarea {
     height: 20vh;
+    padding-top: 1vh;
 }
 .Tags {
     margin-bottom: 8vh;
 }
 .Tags textarea {
     height: 10vh;
+    padding-top: 1vh;
+}
+.Audioformat {
+    margin-bottom: 4vh;
 }
 .Audioformat select {
-    height: 4vh;
-    width: 8vw !important;
+    height: 5vh;
+    width: 15vw !important;
+    background-color: transparent;
+    border: 2px solid #c89dff;
+    border-radius: 19px;
+    color: white;
+    box-sizing: border-box;
+    padding: 0.5vh 1vw;
 }
-.Upload-Input {
-    /* display: none; */
+
+.Audioformat select:focus {
+    border: 2px solid #c89dff;
+}
+.Audioformat select option {
+    color: white;
+    background-color: #c89dff;
+    border-radius: 19px;
+}
+.submit-button {
+    margin-left: 30vw;
+}
+.submit-button button {
+    height: 5vh;
+    width: 15vw !important;
+    background-color: transparent;
+    border: 2px solid #c89dff;
+    border-radius: 19px;
+    color: white;
+    box-sizing: border-box;
 }

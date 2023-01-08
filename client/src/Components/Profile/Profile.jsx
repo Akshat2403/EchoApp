@@ -8,7 +8,6 @@ import Card from './Music-card';
 
 import useFetch from '../usefetch';
 const Profile = () => {
-    console.log(localStorage.getItem('user'));
     const User = JSON.parse(localStorage.getItem('user'));
 
     let url = `http://localhost:5000/${User.id}`;
