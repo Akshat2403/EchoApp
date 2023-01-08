@@ -1,8 +1,11 @@
 import arrow from './arrow.png';
 import './Audio.css';
+import React from 'react';
+import Popup from 'reactjs-popup';
 
 import Commentcard from './Comment-card';
 import Commenticon from './Comment-logo.png';
+import AddComment from '../AddComment/AddComment';
 const Comment = () => {
     return (
         <div className="Comment-main">
@@ -19,7 +22,11 @@ const Comment = () => {
                     }}
                 >
                     <div>
-                        <img src={Commenticon} alt="" />
+                        <Popup trigger={<img src={Commenticon} alt="" />}>
+                            <div className="Comment-pop-up">
+                                <AddComment />
+                            </div>
+                        </Popup>
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center' }}>
                         <img src={arrow}></img>

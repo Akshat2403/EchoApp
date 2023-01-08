@@ -21,6 +21,21 @@
     gap: 1vw;
     align-items: baseline;
 }
+
+.popup-content {
+    left: 0 !important;
+    top: 0 !important;
+}
+.Comment-pop-up {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    background: none;
+    background: transparent;
+    background-repeat: no-repeat;
+    justify-content: center;
+}
 .Comment-heading {
     font-size: 3vw;
     font-weight: 600;
