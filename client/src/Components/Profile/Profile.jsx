@@ -27,8 +27,11 @@ const Profile = () => {
                 </div>
                 <div className="User-profile-details">
                     <div className="User-profile-details-Profile"> Profile</div>
-                    <div className="User-profile-details-Name">
-                        Paridhi Baruah
+                    <div className="User-profile-details-box">
+                        <div className="User-profile-details-Name">
+                            Paridhi Baruah
+                        </div>
+                        <div className="User-profile-details-Edit">Edit</div>
                     </div>
                     <div className="User-profile-details-email">
                         {' '}
