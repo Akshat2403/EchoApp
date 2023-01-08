@@ -14,13 +14,17 @@ function App() {
         <>
             <Router>
                 <Routes>
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/signup" element={<Signup />} />
-                    <Route path="/search" element={<Search />} />
-                    <Route path="/upload" element={<Upload />} />
-                    <Route path="/profile" element={<Profile />} />
-                    <Route path="/audioplayer" element={<Audioplayer />} />
-                    <Route path="/home" element={<Home />} />
+                    <Route exact path="" element={<Home />} />
+                    <Route exact path="/login" element={<Login />} />
+                    <Route exact path="/signup" element={<Signup />} />
+                    <Route exact path="/search" element={<Search />} />
+                    <Route exact path="/upload" element={<Upload />} />
+                    <Route exact path="/profile" element={<Profile />} />
+                    <Route
+                        exact
+                        path="/audioplayer/:id"
+                        element={<Audioplayer />}
+                    />
                 </Routes>
             </Router>
         </>
