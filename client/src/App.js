@@ -5,6 +5,9 @@ import Signup from './Components/Login/Signup';
 import Search from './Components/Search/Search';
 import Upload from './Components/Upload/Upload';
 import Profile from './Components/Profile/Profile';
+import Error from './Components/404/404';
+import Audioplayer from './Components/Audio-Player/Audio-Player';
+import Home from './Components/Landing-Page/Home';
 
 function App() {
     return (
@@ -16,6 +19,8 @@ function App() {
                     <Route path="/search" element={<Search />} />
                     <Route path="/upload" element={<Upload />} />
                     <Route path="/profile" element={<Profile />} />
+                    <Route path="/audioplayer" element={<Audioplayer />} />
+                    <Route path="/home" element={<Home />} />
                 </Routes>
             </Router>
         </>
