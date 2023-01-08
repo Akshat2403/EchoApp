@@ -7,6 +7,7 @@ import Search from './Components/Search/Search';
 import Upload from './Components/Upload/Upload';
 import { UseridProvider } from './Components/userid';
 import Profile from './Components/Profile/Profile';
+import Error from './Components/404/404';
 
 function App() {
     return (
@@ -20,6 +21,7 @@ function App() {
                             <Route path="/search" element={<Search />} />
                             <Route path="/upload" element={<Upload />} />
                             <Route path="/profile" element={<Profile />} />
+                            <Route path="*" element={<Error />} />
                         </Routes>
                     </Router>
                 </UseridProvider>
