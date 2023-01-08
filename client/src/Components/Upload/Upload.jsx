@@ -19,15 +19,20 @@ const Upload = () => {
         formData.append('uploadVideo', uploadVideo);
         formData.append('title', title);
         formData.append('description', desc);
-        formData.append('tag', tags);
+        formData.append('tags', tags);
         formData.append('format', format);
         try {
             await axios
-                .post(`/audio/6fc71035-ce77-4173-a2f7-3d3fa426e33a`, formData, {
-                    headers: {
-                        'Content-Type': 'multipart/form-data',
-                    },
-                })
+                .post(
+                    `http://localhost:5000/audio/8e14abaa-1cd6-489f-a86e-0d0e22bb5f4e`,
+                    formData,
+                    {
+                        headers: {
+                            'Content-Type': 'multipart/form-data',
+                        },
+                        withCredentials: 'include',
+                    }
+                )
                 .then((data) => {
                     console.log(data);
                 });
@@ -84,8 +89,8 @@ const Upload = () => {
                                         setFormat(e.target.value);
                                     }}
                                 >
-                                    <option disabled>
-                                        Choose Audio Format
+                                    <option disabled selected value="">
+                                        Choose Audio format
                                     </option>
                                     <option value="mp3">mp3</option>
                                     <option value="wav">wav</option>
