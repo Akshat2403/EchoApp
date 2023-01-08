@@ -7,6 +7,7 @@ import Search from './Components/Search/Search';
 import Upload from './Components/Upload/Upload';
 import Profile from './Components/Profile/Profile';
 import Audioplayer from './Components/Audio-Player/Audio-Player';
+import Home from './Components/Landing-Page/Home';
 
 function App() {
     return (
@@ -20,6 +21,7 @@ function App() {
                         <Route path="/upload" element={<Upload />} />
                         <Route path="/profile" element={<Profile />} />
                         <Route path="/audioplayer" element={<Audioplayer />} />
+                        <Route path="/home" element={<Home />} />
                     </Routes>
                 </Router>
             </AuthProvider>

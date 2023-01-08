@@ -1,3 +1,6 @@
+body {
+    margin: 0%;
+}
 .Grid {
     display: flex;
     flex-wrap: wrap;
@@ -21,4 +24,84 @@
     background-size: 100vw 500vh;
     flex-direction: column;
     min-height: 100vh;
+}
+.Homepage {
+    display: flex;
+    height: 50vh;
+    width: 100vw;
+    padding: 0vh 5vw;
+    box-sizing: border-box;
+}
+.Homepage-cd {
+    display: flex;
+    width: 45vw;
+    align-items: center;
+    justify-content: center;
+}
+.Homepage-search {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.Homepage-search-title {
+    font-size: 3vw;
+    color: white;
+    margin-bottom: 1vh;
+}
+.Homepage-search-tought {
+    font-size: 2vw;
+    color: white;
+}
+.Search-bar1 input {
+    padding: 2vh 3.5vw 2vh 5vw;
+    height: 5vh;
+    box-sizing: border-box;
+    min-height: 40px;
+    width: 37vw;
+    background: rgba(235, 219, 255, 0.34);
+    border-radius: 30px;
+    font-size: 1.5vw;
+    color: white;
+}
+
+.Search-bar1 input::placeholder {
+    color: white;
+}
+.Search-bar1 input:focus {
+    outline: none;
+}
+
+.Search-button1 {
+    background: transparent;
+    padding: 0%;
+    margin: 0%;
+    border: none;
+    margin-top: -2vh;
+
+    position: absolute;
+}
+.Search-button1 img {
+    width: 30px;
+    margin-left: 1vw;
+    margin-top: -3vh;
+}
+@media screen and (max-width: 600px) {
+    .Homepage {
+        flex-direction: column;
+        align-items: center;
+    }
+    .Homepage-cd {
+        height: 55vw;
+        width: 55vw;
+    }
+    .Homepage-search-title {
+        display: none;
+    }
+    .Homepage-search-tought {
+        display: none;
+    }
+    .Search-bar1 form input {
+        padding-left: 7vw;
+        width: 70vw;
+    }
 }
