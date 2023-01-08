@@ -170,7 +170,10 @@ body {
 .Tags textarea {
     height: 10vh;
 }
-.Audioformat input {
+.Audioformat select {
     height: 4vh;
     width: 8vw !important;
+}
+.Upload-Input {
+    /* display: none; */
 }
