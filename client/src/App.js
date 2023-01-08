@@ -8,11 +8,24 @@ import Upload from './Components/Upload/Upload';
 import { UseridProvider } from './Components/userid';
 import Profile from './Components/Profile/Profile';
 import Error from './Components/404/404';
+import Audioplayer from './Components/Audio-Player/Audio-Player';
+import Home from './Components/Landing-Page/Home';
 
 function App() {
     return (
         <>
             <AuthProvider>
+                <Router>
+                    <Routes>
+                        <Route path="/login" element={<Login />} />
+                        <Route path="/signup" element={<Signup />} />
+                        <Route path="/search" element={<Search />} />
+                        <Route path="/upload" element={<Upload />} />
+                        <Route path="/profile" element={<Profile />} />
+                        <Route path="/audioplayer" element={<Audioplayer />} />
+                        <Route path="/home" element={<Home />} />
+                    </Routes>
+                </Router>
                 <UseridProvider>
                     <Router>
                         <Routes>

@@ -1,7 +1,12 @@
 import { PrismaClient } from '@prisma/client';
 import { uploadConverter, youtubeConverter } from '../utils/converter.js';
+import { fileURLToPath } from 'url';
+import fs from 'fs';
+import { dirname } from 'path';
 import createError from '../utils/error.js';
 import { v4 as uuidv4 } from 'uuid';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const prisma = new PrismaClient();
 
@@ -104,6 +109,14 @@ export const addAudioYT = async (req, res, next) => {
 };
 export const deleteAudio = async (req, res, next) => {
     const reqID = req.params.id;
+    const audioinfo = await prisma.audio.findUnique({
+        where: {
+            id: reqID,
+        },
+    });
+    fs.unlink(
+        `${__dirname}/../assets/audio/${audioinfo.url}.${audioinfo.format}`
+    );
     const audio = await prisma.audio.delete({
         where: {
             id: reqID,

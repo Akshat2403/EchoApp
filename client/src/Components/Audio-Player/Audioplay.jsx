@@ -1,5 +1,7 @@
 import Audioimage from './Audio-image.png';
 import './Audioplay.css';
+import Audiocontroller from './AudioPlayer';
+
 const Audioplay = () => {
     return (
         <>
@@ -15,7 +17,9 @@ const Audioplay = () => {
                             AC-DC
                         </div>
                     </div>
-                    <div className="Audioplay-controller"></div>
+                    <div className="Audioplay-controller">
+                        <Audiocontroller />
+                    </div>
                 </div>
             </div>
         </>
