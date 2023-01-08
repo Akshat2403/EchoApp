@@ -2,6 +2,7 @@ import 'dotenv/config';
 import express from 'express';
 import helmet from 'helmet';
 import cookieParser from 'cookie-parser';
+import cors from 'cors';
 
 import audioRoutes from './routes/audio.routes.js';
 import commentRoutes from './routes/comment.routes.js';
@@ -18,6 +19,7 @@ app.use(express.static('assets'));
 app.use(express.json());
 app.use(helmet());
 app.use(cookieParser());
+app.use(cors({ origin: '*', credentials: true, optionsSuccessStatus: 200 }));
 
 // Routes
 app.use('/audio', audioRoutes);

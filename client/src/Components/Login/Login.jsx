@@ -45,14 +45,12 @@ export const Login = () => {
 
         try {
             const response = await axios.post(
-                '/login',
+                'http://localhost:5000/login',
                 JSON.stringify({ email, password }),
                 {
                     headers: { 'Content-Type': 'application/json' },
-                    withCredentials: true,
                 }
             );
-            console.log(response?.data);
             const access_token = response?.data?.access_token;
             const uid = response?.data?.id;
             setAuth({ email, password, access_token });
@@ -90,53 +88,48 @@ export const Login = () => {
                 <div className="Logo-section">
                     <img src={logo} alt="" />
                 </div>
-                <div className="Login-section">
-                    {/* {!errMsg && */}
-                    <div className="Login-section-data">
-                        <div className="Login-heading">Username</div>
-                        <div>
-                            <input
-                                type="text"
-                                className="Input-type"
-                                onChange={(e) => setUser(e.target.value)}
-                            />
-                        </div>
-                        <div className="Login-heading"> Password</div>
-                        <div>
-                            <input
-                                type="password"
-                                className="Input-type"
-                                onChange={(e) => setPwd(e.target.value)}
-                            />
-                        </div>
-                        <div className="Login-Button">
-                            <button
-                                className="Input-type-login"
-                                onClick={handleSubmit}
-                            >
-                                Login
-                            </button>
-                            <div className="Register">
-                                NO account?{' '}
-                                <span>
-                                    {' '}
-                                    <Link
-                                        to="/Signup"
-                                        style={{
-                                            textDecoration: 'none',
-                                            color: '#a545c8',
-                                        }}
-                                    >
-                                        Register{' '}
-                                    </Link>
-                                </span>
+                <form onSubmit={handleSubmit}>
+                    <div className="Login-section">
+                        <div className="Login-section-data">
+                            <div className="Login-heading">Username</div>
+                            <div>
+                                <input
+                                    type="text"
+                                    className="Input-type"
+                                    onChange={(e) => setUser(e.target.value)}
+                                />
+                            </div>
+                            <div className="Login-heading"> Password</div>
+                            <div>
+                                <input
+                                    type="password"
+                                    className="Input-type"
+                                    onChange={(e) => setPwd(e.target.value)}
+                                />
+                            </div>
+                            <div className="Login-Button">
+                                <button className="Input-type-login">
+                                    Login
+                                </button>
+                                <div className="Register">
+                                    NO account?{' '}
+                                    <span>
+                                        {' '}
+                                        <Link
+                                            to="/Signup"
+                                            style={{
+                                                textDecoration: 'none',
+                                                color: '#a545c8',
+                                            }}
+                                        >
+                                            Register{' '}
+                                        </Link>
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    {/* } */}
-                    {/* {errMsg &&
-                    <div className='err'>{errMsg}</div>} */}
-                </div>
+                </form>
             </div>
         </>
     );
