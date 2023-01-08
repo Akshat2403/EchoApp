@@ -62,7 +62,7 @@ body {
 }
 
 .Music-song {
-    height: 30vh;
+    height: 35vh;
     width: 10vw;
     background: #240e2d;
     opacity: 0.81;
@@ -76,7 +76,7 @@ body {
     color: #ffffff;
     box-sizing: border-box;
     font-size: 1.5vw;
-    min-width: 175px;
+    min-width: 200px;
     margin: 2vh 4vw 2vh 0vw;
 }
 
@@ -88,12 +88,13 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 100px;
+    min-width: 150px;
+    min-height: 150px;
 }
 .Music-card img {
     width: 5vw;
-    min-width: 60px;
-    min-height: 60px;
+    min-width: 100px;
+    min-height: 100px;
 
     height: 5vw;
 }
@@ -176,7 +177,7 @@ body {
 .User-profile-details-upload-video {
     padding: 2vh 4vw;
     box-sizing: border-box;
-    height: 5vh;
+    height: 7vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -193,7 +194,7 @@ body {
 .User-profile-details-upload-youtube {
     padding: 2vh 4vw;
     box-sizing: border-box;
-    height: 5vh;
+    height: 7vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -219,5 +220,12 @@ body {
         width: 28vw;
         height: 28vw;
         margin-right: 4vw;
+    }
+
+    .User-profile-details-upload-video {
+        height: 5vh;
+    }
+    .User-profile-details-upload-youtube {
+        height: 5vh;
     }
 }

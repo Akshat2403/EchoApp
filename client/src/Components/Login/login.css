@@ -98,6 +98,7 @@ body {
     text-align: center;
     color: #ffffff;
     margin-bottom: 2vh;
+    max-width: 200px;
 }
 .Login-section div span {
     color: #a545c8;
@@ -135,10 +136,7 @@ body {
         min-height: 40px;
         max-height: 40px;
     }
-    .Login-heading,
-    .Input-type-login {
-        font-size: 4vw;
-    }
+
     .Input-type2 {
         font-size: 3vw;
     }

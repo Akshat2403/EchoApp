@@ -1,25 +1,11 @@
-import logo from './logo1.png';
-import userlogo from './User-logo.png';
+import Navbar from './Navbar';
 import playerlogo from './Player-logo.png';
 import './Upload.css';
 const Upload = () => {
     return (
         <>
             <div className="Upload-page">
-                <div className="Navbar">
-                    <div>
-                        <div>
-                            <img src={logo} alt="" />
-                        </div>
-                        <div className="Heading-top">Echo</div>
-                    </div>
-                    <div className="User-img">
-                        <div>
-                            <img src={userlogo} alt="" />
-                        </div>
-                        <div className="div">Logout</div>
-                    </div>
-                </div>
+                <Navbar />
                 <div className="Upload-item">
                     <div className="Upload-item-details">
                         <div className="title">

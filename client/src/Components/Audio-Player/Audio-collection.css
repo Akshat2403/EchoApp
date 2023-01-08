@@ -1,0 +1,50 @@
+body {
+    margin: 0px;
+}
+
+.Audio-table-heading {
+    color: #d5b4ff;
+    font-size: 1.8vw;
+    text-align: left;
+    border-bottom: 3px solid rgba(200, 157, 255, 0.36);
+    height: 5vh;
+    margin-bottom: 2vh;
+}
+.Audio-column1-width {
+    width: 10vw;
+}
+.Audio-column2-width {
+    width: 25vw;
+}
+.Audio-column3-width {
+    width: 15vw;
+}
+.Audio-column4-width {
+    width: 25vw;
+}
+
+.Audio-column5-width {
+    width: 15vw;
+}
+.Audio-table-details {
+    color: #ffffff;
+
+    text-align: left;
+    font-size: 1.5vw;
+    background: #321f3a;
+    opacity: 0.5;
+    border-radius: 0px;
+    height: 5vh;
+    border-bottom: 3px transparent solid !important;
+}
+table {
+    border-collapse: collapse;
+}
+
+.Audios {
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    padding: 0vh 5vw;
+    box-sizing: border-box;
+}

@@ -5,6 +5,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from 'react-use-auth';
 import AuthContext from '../auth';
 import axios from 'axios';
+import { BrowserRouter as Router, Link } from 'react-router-dom';
 
 // export const Login = () => {
 //   const [user, setUser] = useState('')
@@ -133,7 +134,19 @@ export const Login = () => {
                                 Login
                             </button>
                             <div className="Register">
-                                NO account? <span>Register </span>
+                                NO account?{' '}
+                                <span>
+                                    {' '}
+                                    <Link
+                                        to="/Signup"
+                                        style={{
+                                            textDecoration: 'none',
+                                            color: '#a545c8',
+                                        }}
+                                    >
+                                        Register{' '}
+                                    </Link>
+                                </span>
                             </div>
                         </div>
                     </div>
