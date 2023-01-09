@@ -92,7 +92,10 @@ const Upload = () => {
                                     </option>
                                     <option value="mp3">mp3</option>
                                     <option value="wav">wav</option>
-                                    <option value="aac">aac</option>
+                                    <option value="flac">flac</option>
+                                    <option value="aiff">aiff</option>
+                                    <option value="ogg">ogg</option>
+                                    <option value="asf">asf</option>
                                 </select>
                             </div>
                             <div className="submit-button">

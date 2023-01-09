@@ -5,30 +5,32 @@ import './Upload.css';
 import axios from 'axios';
 
 const UploadYt = () => {
-    const [uploadVideo, setUploadVideo] = useState();
+    const User = JSON.parse(sessionStorage.getItem('user'));
+    console.log(User.id);
     const [title, setTitle] = useState('');
     const [desc, setDesc] = useState('');
     const [tags, setTags] = useState([]);
     const [format, setFormat] = useState('');
+    const [URL, setURL] = useState('');
     const [ispending, setIspending] = useState(false);
     const handleSubmit = async (e) => {
         console.log('check');
         setIspending(true);
         e.preventDefault();
-        var formData = new FormData();
-        formData.append('uploadVideo', uploadVideo);
-        formData.append('title', title);
-        formData.append('description', desc);
-        formData.append('tags', tags);
-        formData.append('format', format);
         try {
             await axios
                 .post(
-                    `http://localhost:5000/audio/8e14abaa-1cd6-489f-a86e-0d0e22bb5f4e`,
-                    formData,
+                    `http://localhost:5000/audio/${User.id}/youtube`,
+                    JSON.stringify({
+                        format,
+                        youtubeURL: URL,
+                        tag: tags,
+                        description: desc,
+                        title,
+                    }),
                     {
                         headers: {
-                            'Content-Type': 'multipart/form-data',
+                            'Content-Type': 'application/json',
                         },
                         withCredentials: 'include',
                     }
@@ -46,10 +48,10 @@ const UploadYt = () => {
                     <div className="Upload-item">
                         <div className="Upload-item-details">
                             <div className="Yt-link">
-                                <label htmlFor="title">Youtube link</label>
+                                <label htmlFor="title">Title</label>
                                 <input
                                     type="text"
-                                    name="youtubeURL"
+                                    name="title"
                                     onChange={(e) => {
                                         setTitle(e.target.value);
                                     }}
@@ -95,18 +97,21 @@ const UploadYt = () => {
                                     </option>
                                     <option value="mp3">mp3</option>
                                     <option value="wav">wav</option>
-                                    <option value="aac">aac</option>
+                                    <option value="flac">flac</option>
+                                    <option value="aiff">aiff</option>
+                                    <option value="ogg">ogg</option>
+                                    <option value="asf">asf</option>
                                 </select>
                             </div>
                             <div className="title1">
-                                <label htmlFor="title">Title</label>
+                                <label htmlFor="youtubeURL">Youtube Link</label>
                                 <input
                                     type="text"
-                                    name="title"
+                                    name="youtubeURL"
                                     onChange={(e) => {
-                                        setTitle(e.target.value);
+                                        setURL(e.target.value);
                                     }}
-                                    value={title}
+                                    value={URL}
                                     required
                                 />
                             </div>

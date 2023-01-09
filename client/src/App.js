@@ -6,6 +6,7 @@ import Search from './Components/Search/Search';
 import Upload from './Components/Upload/Upload';
 import Profile from './Components/Profile/Profile';
 import Error from './Components/404/404';
+import UploadYt from './Components/Upload/UploadYt';
 import Audioplayer from './Components/Audio-Player/Audio-Player';
 import Home from './Components/Landing-Page/Home';
 
@@ -20,6 +21,7 @@ function App() {
                     <Route exact path="/search" element={<Search />} />
                     <Route exact path="/upload" element={<Upload />} />
                     <Route exact path="/profile" element={<Profile />} />
+                    <Route exact path="/upload/yt" element={<UploadYt />} />
                     <Route
                         exact
                         path="/audioplayer/:id"
