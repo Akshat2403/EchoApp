@@ -27,7 +27,7 @@ const createAudio = async (req, audioName) => {
     });
     if (tags) {
         await Promise.all(
-            tag.map(
+            tags.map(
                 async (ele) =>
                     await prisma.tag.upsert({
                         where: { name: ele },
@@ -100,6 +100,7 @@ export const addAudio = async (req, res, next) => {
 
 export const addAudioYT = async (req, res, next) => {
     try {
+        console.log(req.body);
         const audioName = `${uuidv4()}`;
         const VideoSource = uuidv4();
         await youtubeConverter(
