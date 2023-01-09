@@ -8,6 +8,8 @@ import Profile from './Components/Profile/Profile';
 import Error from './Components/404/404';
 import Audioplayer from './Components/Audio-Player/Audio-Player';
 import Home from './Components/Landing-Page/Home';
+// import { AuthProvider } from './Components/auth';
+import UploadYt from './Components/Upload/UploadYt';
 
 function App() {
     return (
@@ -25,6 +27,8 @@ function App() {
                         path="/audioplayer/:id"
                         element={<Audioplayer />}
                     />
+                    <Route exact path="/upload/yt" element={<UploadYt />} />
+                    <Route path="*" element={<Error />} />
                 </Routes>
             </Router>
         </>

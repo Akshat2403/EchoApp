@@ -2,7 +2,24 @@ import './Search.css';
 import userlogo from './User-logo.png';
 import searchlogo from './search.png';
 import logo from './logo1.png';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import useFetch from '../usefetch';
+import Card from '../Profile/Music-card';
 const Search = () => {
+    const [newdata, setNewdata] = useState(null);
+
+    const { data } = useFetch('http://localhost:5000/audio');
+
+    const [search, setSearch] = useState('');
+
+    const handleSubmit = () => {
+        const data = data.filter(
+            data.title.toLowerCase().indexOf(search.toLowerCase()) != -1
+        );
+        setNewdata(data);
+    };
+
     return (
         <>
             <div className="Search-page">
@@ -21,12 +38,19 @@ const Search = () => {
                     <img src={logo} alt="" />
                 </div>
                 <div className="Search-bar">
-                    <form action="">
-                        <input type="text" placeholder="Type something..." />
+                    <form action="" onSubmit={handleSubmit}>
+                        <input
+                            type="text"
+                            placeholder="Type something... "
+                            onChange={(e) => setSearch(e.target.value)}
+                        />
                     </form>
                     <button className="Search-button">
                         <img src={searchlogo} alt="" />
                     </button>
+                </div>
+                <div className="Grid">
+                    <Card data={newdata} />
                 </div>
             </div>
         </>

@@ -3,13 +3,13 @@ import userlogo from './User-logo.png';
 import './Upload.css';
 import useFetch from '../usefetch';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 const Navbar = () => {
     const auth = sessionStorage.getItem('user');
     const navigate = useNavigate();
 
     const handleLogout = () => {
-        sessionStorage.removeItem('user');
+        sessionStorage.clear();
         axios.get('http://localhost:5000/logout', {
             withCredentials: true,
         });
@@ -38,7 +38,10 @@ const Navbar = () => {
                     )}
                     {!auth && (
                         <>
-                            <div className="div">Login/signup</div>
+                            <div className="div">
+                                <Link to="/login">Login</Link>/
+                                <Link to="/signup">signup</Link>
+                            </div>
                         </>
                     )}
                 </div>

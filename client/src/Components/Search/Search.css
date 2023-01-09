@@ -44,7 +44,11 @@ body {
     max-width: 400px;
     max-height: 400px;
 }
-
+.Grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+}
 .Search-bar input {
     padding: 2vh 3.5vw;
     height: 5vh;

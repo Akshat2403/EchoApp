@@ -11,6 +11,8 @@ const UploadYt = () => {
     const [tags, setTags] = useState([]);
     const [format, setFormat] = useState('');
     const [ispending, setIspending] = useState(false);
+    const [youtubeURL, setYoutubeURL] = useState('');
+    const User = JSON.parse(sessionStorage.getItem('user'));
     const handleSubmit = async (e) => {
         console.log('check');
         setIspending(true);
@@ -21,14 +23,15 @@ const UploadYt = () => {
         formData.append('description', desc);
         formData.append('tags', tags);
         formData.append('format', format);
+        formData.append('youtubeURL', youtubeURL);
         try {
             await axios
                 .post(
-                    `http://localhost:5000/audio/8e14abaa-1cd6-489f-a86e-0d0e22bb5f4e`,
+                    `http://localhost:5000/audio/${User.id}/youtube`,
                     formData,
                     {
                         headers: {
-                            'Content-Type': 'multipart/form-data',
+                            'Content-Type': 'application/json',
                         },
                         withCredentials: 'include',
                     }

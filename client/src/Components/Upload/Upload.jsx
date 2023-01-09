@@ -3,6 +3,7 @@ import Navbar from './Navbar';
 import playerlogo from './Player-logo.png';
 import './Upload.css';
 import axios from 'axios';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const Upload = () => {
     const User = JSON.parse(sessionStorage.getItem('user'));
@@ -12,6 +13,7 @@ const Upload = () => {
     const [tag, setTag] = useState([]);
     const [format, setFormat] = useState('');
     const [ispending, setIspending] = useState(false);
+    const navigate = useNavigate();
     const handleSubmit = async (e) => {
         console.log('check');
         setIspending(true);
@@ -32,6 +34,9 @@ const Upload = () => {
                 })
                 .then((data) => {
                     console.log(data);
+                    if (data.id) {
+                        navigate('/profie');
+                    }
                 });
         } catch (err) {}
     };
