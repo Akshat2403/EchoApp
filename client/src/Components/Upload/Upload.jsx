@@ -5,10 +5,11 @@ import './Upload.css';
 import axios from 'axios';
 
 const Upload = () => {
+    const User = JSON.parse(sessionStorage.getItem('user'));
     const [uploadVideo, setUploadVideo] = useState();
     const [title, setTitle] = useState('');
     const [desc, setDesc] = useState('');
-    const [tags, setTags] = useState([]);
+    const [tag, setTag] = useState([]);
     const [format, setFormat] = useState('');
     const [ispending, setIspending] = useState(false);
     const handleSubmit = async (e) => {
@@ -19,20 +20,16 @@ const Upload = () => {
         formData.append('uploadVideo', uploadVideo);
         formData.append('title', title);
         formData.append('description', desc);
-        formData.append('tags', tags);
+        formData.append('tag', tag);
         formData.append('format', format);
         try {
             await axios
-                .post(
-                    `http://localhost:5000/audio/8e14abaa-1cd6-489f-a86e-0d0e22bb5f4e`,
-                    formData,
-                    {
-                        headers: {
-                            'Content-Type': 'multipart/form-data',
-                        },
-                        withCredentials: 'include',
-                    }
-                )
+                .post(`http://localhost:5000/audio/${User.id}`, formData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                    },
+                    withCredentials: true,
+                })
                 .then((data) => {
                     console.log(data);
                 });
@@ -74,9 +71,10 @@ const Upload = () => {
                                     name="Tags"
                                     rows="2"
                                     onChange={(e) => {
-                                        setTags(e.target.value.split(','));
+                                        setTag(e.target.value.split(','));
+                                        console.log(tag);
                                     }}
-                                    value={tags}
+                                    value={tag}
                                 ></textarea>
                             </div>
                             <div className="Audioformat">

@@ -35,13 +35,14 @@ export const Login = () => {
                 JSON.stringify({ email, password }),
                 {
                     headers: { 'Content-Type': 'application/json' },
+                    withCredentials: 'include',
                 }
             );
             console.log(JSON.stringify(response?.data));
             if (response) {
-                localStorage.setItem('user', JSON.stringify(response?.data));
+                sessionStorage.setItem('user', JSON.stringify(response?.data));
             }
-            console.log(localStorage.getItem('user'));
+            console.log(sessionStorage.getItem('user'));
             const accessToken = response?.data?.access_Token;
             const id = response?.data?.id;
             setUser('');
