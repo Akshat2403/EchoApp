@@ -47,7 +47,7 @@ const Home = () => {
                         {data &&
                             data.map((audio) => (
                                 <Link
-                                    to=""
+                                    to={`/audioplayer/${audio.id}`}
                                     className="Music-song"
                                     key={audio.id}
                                 >
