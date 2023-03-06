@@ -1,0 +1,16 @@
+.LogoTop {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    left: 2vw;
+    top: 2vh;
+}
+.LogoTopImg {
+    width: 6vh;
+    height: 6vh;
+}
+.HeadingTop {
+    text-align: center;
+    font-size: 1.4vw;
+    color: white;
+}
