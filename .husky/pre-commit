@@ -1,6 +1,0 @@
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
-
-yarn --cwd ./server/ prettier && git add .
-yarn --cwd ./client/ prettier && git add .
-
