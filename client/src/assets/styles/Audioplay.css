@@ -1,0 +1,104 @@
+.Audioplay-main {
+    height: 40vh;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    display: flex;
+
+    padding: 0vh 5vw;
+    width: 100vw;
+    box-sizing: border-box;
+    align-items: center;
+}
+.Audioplay-image {
+    width: 37vh;
+    height: 40vh;
+    filter: drop-shadow(15px 15px 4px #190321);
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+.Audioplay-image img {
+    width: 30vh;
+    height: 30vh;
+}
+body {
+    margin: 0px;
+}
+.Audioplay-details {
+    display: flex;
+    flex-direction: column;
+    height: 30vh;
+    justify-content: space-around;
+}
+.Audioplay-details-playing {
+    font-style: normal;
+    font-weight: 800;
+    font-size: 3vw;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+}
+.Audioplay-details-audioname {
+    display: flex;
+    flex-direction: column;
+}
+.Audioplay-details-audioname div {
+    color: white;
+    font-size: 2.5vw;
+    margin-bottom: 1vh;
+}
+.Audioplay-details-audiosinger {
+    font-size: 2vw !important;
+    color: #696969 !important;
+}
+
+audio {
+    width: 50vw !important;
+    height: 7vh !important;
+    background: transparent;
+}
+.Audioplay-controller {
+    display: flex;
+}
+.Audioplay-controller div button {
+    padding: 0%;
+    background: transparent;
+    border: none;
+}
+.Audioplay-controller div button img {
+    height: 50px;
+    width: 50px;
+}
+@media screen and (max-width: 900px) {
+    .Audioplay-image img {
+        width: 30vw;
+        height: 30vw;
+    }
+    .Audioplay-details {
+        height: 30vw;
+    }
+}
+@media screen and (max-width: 550px) {
+    .Audioplay-image img {
+        width: 40vw;
+        height: 40vw;
+    }
+    .Audioplay-image {
+        justify-content: center;
+        margin-bottom: 2vh;
+    }
+    .Audioplay-details {
+        height: 40vw;
+    }
+    .Audioplay-main {
+        flex-direction: column;
+        height: auto;
+        height: 50vh;
+    }
+    .Audioplay-details-playing {
+        justify-content: center !important;
+    }
+    .Audioplay-details-audioname {
+        align-items: center;
+    }
+}

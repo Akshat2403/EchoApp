@@ -1,0 +1,72 @@
+.comment-cross {
+    display: flex;
+    height: 2vw;
+    justify-content: right;
+    align-items: flex-start;
+}
+.comment-cross img {
+    height: 3vw;
+    width: 3vw;
+}
+.Addcomment-main {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(
+        116.79deg,
+        rgba(77, 61, 85, 0.390134) 3.11%,
+        rgba(142, 132, 147, 0.248102) 63.33%
+    );
+    backdrop-filter: blur(30px);
+    border-radius: 1.5vw;
+    margin: 3vw;
+    padding: 2vw 2vw 2vw 4vw;
+    width: 50vw;
+    height: 15vw;
+}
+.Comment-bar input {
+    padding: 2vh 3.5vw;
+    height: 5vw;
+    box-sizing: border-box;
+    min-height: 40px;
+    width: 45vw;
+    background: linear-gradient(
+        116.51deg,
+        rgba(125, 116, 129, 0.390134) 13.82%,
+        rgba(239, 224, 245, 0.248102) 64.49%
+    );
+    backdrop-filter: blur(30px);
+    border-radius: 1.5vw;
+    font-size: 1.5vw;
+    color: #a7a5a5;
+    border: none;
+}
+.Comment-bar input::placeholder {
+    color: #a7a5a5;
+}
+.Comment-bar input:focus {
+    border: none;
+}
+
+.Comment-button {
+    background: transparent;
+    padding: 0%;
+    margin: 0%;
+    border: none;
+    margin-top: -3.5vh;
+    position: absolute;
+}
+.Comment-button img {
+    width: 3vw;
+    position: absolute;
+    min-width: 20px;
+    max-width: 30px;
+    margin-left: 40vw;
+    margin-top: -1vh;
+}
+.Comment-bar label {
+    font-weight: 600;
+    font-size: 2.3vw;
+    display: flex;
+    align-items: center;
+    color: white;
+}

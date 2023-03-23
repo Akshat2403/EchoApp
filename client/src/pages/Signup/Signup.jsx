@@ -1,15 +1,11 @@
 import styles from '../../assets/styles/signup.module.css';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { Axios } from '../../features/axios/axios';
+import Axios from '../../features/axios/axios';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Logo from '../../components/Logo';
 
 const Signup = () => {
-    const { user } = useSelector((state) => state.auth);
-    setTimeout(console.log(user), 5000);
-
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
@@ -40,7 +36,7 @@ const Signup = () => {
     return (
         <>
             <Logo />
-            {user ? user.id : null}
+            {/* {user ? user.id : null} */}
             <div className="Login-Page">
                 {/* <div className="Logo-section">
           <img src={logo} alt="" />
