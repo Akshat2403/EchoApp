@@ -1,23 +1,20 @@
 import styles from '../../assets/styles/login.module.css';
 import { useState } from 'react';
-import {} from 'react-router-dom';
-import axios from 'axios';
+import { Axios } from '../../features/axios/axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Logo from '../../components/Logo';
-// import { useSelector, useDispatch } from 'react-redux';
-// import { setCredentials } from '../../features/auth/authSlice';
+import logo1 from '../../assets/images/logo1.png'
 export const Login = () => {
-    // const dispatch = useDispatch();
+
     const navigate = useNavigate();
     const [user, setUser] = useState('');
-    // const { user } = useSelector((state) => state.auth);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post(
+            const response = await Axios.post(
                 '/login',
                 JSON.stringify({ email, password }),
                 {
@@ -25,11 +22,12 @@ export const Login = () => {
                     withCredentials: 'include',
                 }
             );
+            console.log(JSON.stringify(response?.data));
+            if (response) {
+                localStorage.setItem('user', JSON.stringify(response?.data));
+            }
+            navigate('/profile');
 
-            // const accept = await handleUser(response.data);
-            // console.log(accept);
-            // accept ? navigate('/signup') : toast('Unable to Login');
-            // console.log(user);
         } catch (err) {
             toast(err.response.data.message);
         }
@@ -38,40 +36,39 @@ export const Login = () => {
     return (
         <>
             <Logo />
-            <div className="Login-Page">
-                {/* <div className="Logo-section">
-                        <img src={logo} alt="" />
-                    </div> */}
+            <div className={styles.Login_Page}>
+                <div className={styles.Logo_section}>
+                        <img src={logo1} alt="" />
+                    </div>
                 <form>
-                    <div className="Login-section">
-                        <div className="Login-section-data">
-                            <div className="Login-heading">Username</div>
+                    <div className={styles.Login_section}>
+                        <div className={styles.Login_section_data}>
+                            <div className={styles.Login_heading}>Username</div>
                             <div>
                                 <input
                                     type="text"
-                                    className="Input-type"
+                                    className={styles.Input_type}
                                     onChange={(e) => setEmail(e.target.value)}
                                 />
                             </div>
-                            <div className="Login-heading"> Password</div>
+                            <div className={styles.Login_heading}> Password</div>
                             <div>
-                                {user ? user.id : 0}
                                 <input
                                     type="password"
-                                    className="Input-type"
+                                    className={styles.Input_type}
                                     onChange={(e) =>
                                         setPassword(e.target.value)
                                     }
                                 />
                             </div>
                             <div
-                                className="Login-Button"
+                                className={styles.Login_Button}
                                 onClick={handleSubmit}
                             >
-                                <button className="Input-type-login">
+                                <button className={styles.Input_type_login}>
                                     Login
                                 </button>
-                                <div className="Register">
+                                <div className={styles.Register}>
                                     NO account?{' '}
                                     <span>
                                         {' '}
