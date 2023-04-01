@@ -3,6 +3,7 @@ import NotFound from '../../assets/images/not found.png';
 import Logo from '../../components/Logo';
 
 const Error = () => {
+    
     return (
         <>
             <Logo />

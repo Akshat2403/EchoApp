@@ -8,7 +8,7 @@ const Navbar = () => {
     const navigate = useNavigate();
 
     const handleLogout = () => {
-        sessionStorage.clear();
+        localStorage.clear();
         axios.get('http://localhost:5000/logout', {
             withCredentials: true,
         });
