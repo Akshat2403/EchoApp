@@ -4,6 +4,7 @@ import Axios from '../../features/axios/axios';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Logo from '../../components/Logo';
+import logo1 from '../../assets/images/logo1.png'
 
 const Signup = () => {
     const [email, setEmail] = useState('');
@@ -24,6 +25,7 @@ const Signup = () => {
             })
                 .then((response) => {
                     navigate('/login');
+                    console.log(response.data)
                 })
                 .catch((Error) => {
                     toast(Error.response.data.message);
@@ -37,18 +39,18 @@ const Signup = () => {
         <>
             <Logo />
             {/* {user ? user.id : null} */}
-            <div className="Login-Page">
-                {/* <div className="Logo-section">
-          <img src={logo} alt="" />
-        </div> */}
-                <div className="Login-section">
+            <div className={styles.Login_Page}>
+            <div className={styles.Logo_section}>
+                        <img src={logo1} alt="" />
+                    </div>
+                <div className={styles.Login_section}>
                     <form action="" onSubmit={handlesubmit}>
-                        <div className="Signin-section-data">
-                            <div className="Login-heading">Username</div>
+                        <div className={styles.Signin_section_data}>
+                            <div className={styles.Login_heading}>Username</div>
                             <div>
                                 <input
                                     type="text"
-                                    className="Input-type2"
+                                    className={styles.Input_type2}
                                     required
                                     value={name}
                                     onChange={(e) => {
@@ -56,11 +58,11 @@ const Signup = () => {
                                     }}
                                 />
                             </div>
-                            <div className="Login-heading">Email</div>
+                            <div className={styles.Login_heading}>Email</div>
                             <div>
                                 <input
                                     type="email"
-                                    className="Input-type2"
+                                    className={styles.Input_type2}
                                     required
                                     value={email}
                                     onChange={(e) => {
@@ -68,11 +70,11 @@ const Signup = () => {
                                     }}
                                 />
                             </div>
-                            <div className="Login-heading">Password</div>
+                            <div className={styles.Login_heading}>Password</div>
                             <div>
                                 <input
                                     type="password"
-                                    className="Input-type2"
+                                    className={styles.Input_type2}
                                     required
                                     value={password}
                                     onChange={(e) => {
@@ -80,13 +82,13 @@ const Signup = () => {
                                     }}
                                 />
                             </div>
-                            <div className="Login-heading">
+                            <div className={styles.Login_heading}>
                                 Confirm Password
                             </div>
                             <div>
                                 <input
                                     type="password"
-                                    className="Input-type2"
+                                    className={styles.Input_type2}
                                     required
                                     value={confirmpassword}
                                     onChange={(e) => {
@@ -94,10 +96,10 @@ const Signup = () => {
                                     }}
                                 />
                             </div>
-                            <div className="Button-register">
+                            <div className={styles.Button_register}>
                                 <button
                                     type="submit"
-                                    className="Input-type-login"
+                                    className={styles.Input_type_login}
                                 >
                                     Register
                                 </button>

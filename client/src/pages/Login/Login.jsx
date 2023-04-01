@@ -1,6 +1,6 @@
 import styles from '../../assets/styles/login.module.css';
 import { useState } from 'react';
-import { Axios } from '../../features/axios/axios';
+import  Axios  from '../../features/axios/axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Logo from '../../components/Logo';

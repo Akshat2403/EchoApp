@@ -1,6 +1,5 @@
 import styles from '../../assets/styles/profile.module.css';
 import { useState } from 'react';
-import { Axios } from '../../features/axios/axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Logo from '../../components/Logo';
@@ -8,11 +7,13 @@ import useFetch from '../../features/axios/usefetch';
 import yt from '../../assets/images/yt.png';
 import userlarge from '../../assets/images/User-large.png'
 import Card from '../../components/card';
+import Navbar from '../../components/Navbar/Navbar';
 
 const Profile = () => {
 
     console.log(localStorage.getItem('user'));
     const User = JSON.parse(localStorage.getItem('user'));
+    console.log(User);
 
     let url = `/${User.id}`;
 
@@ -22,7 +23,7 @@ const Profile = () => {
 
     return (<>
      <div className={styles.Userprofile_page}>
-                <Logo/>
+                <Navbar/>
                 <div className={styles.User_profile}>
                     <div className={styles.User_profile_img}>
                         <img src={userlarge} alt="" />
@@ -33,11 +34,11 @@ const Profile = () => {
                             Profile
                         </div>
                         <div className={styles.User_profile_details_Name}>
-                            {data && <div>{data.name}</div>}
+                            <div>{User.name}</div>
                         </div>
                         <div className={styles.User_profile_details_email}>
                             {' '}
-                            {data && <div>{data.email}</div>}
+                            <div>{User.email}</div>
                         </div>
                         <div className={styles.User_profile_details_upload}>
                             <div className={styles.User_profile_details_upload_video}>
