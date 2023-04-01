@@ -2,23 +2,28 @@ import arrow from '../../assets/images/arrow.png';
 import '../../assets/styles/Audio.css';
 import React from 'react';
 import '../../assets/styles/AddComment.css';
+import useFetch from '../../features/usefetch';
+import { useEffect } from 'react';
 // import next from './next.png';
 // import cross from './cross.png';
 import { useState } from 'react';
 import Commentcard from './Comment-card';
 // import Commenticon from './Comment-logo.png';
 import axios from 'axios';
-const Comment = () => {
+const Comment = ({ audioid }) => {
     const User = JSON.parse(localStorage.getItem('user'));
     const [desc, setDesc] = useState('');
-    const handleSubmit = (e) => {
-        axios.post(
-            `localhost:5000/comment/${User.id}`,
-            JSON.stringify({ desc }),
-            {
-                headers: { 'Content-Type': 'application/json' },
-            }
-        );
+    const [time, setTime] = useState(0);
+    const [arr, setArr] = useState('');
+    const audio = document.getElementById('audio');
+    const [data, setData] = useState('');
+    const handleSubmit = async (e) => {
+        try {
+            const res = await axios.post(
+                `/comment/${User.id}`,
+                JSON.stringify({ desc: desc, timestamp: time })
+            );
+        } catch (err) {}
     };
     return (
         <div className="Comment-main">
@@ -107,10 +112,9 @@ const Comment = () => {
                         </div>
                     </form>
                 </div>
-                <Commentcard />
-                <Commentcard />
-                <Commentcard />
-                <Commentcard />
+                <div>
+                    <Commentcard audioid={audioid} />
+                </div>
             </div>
         </div>
     );

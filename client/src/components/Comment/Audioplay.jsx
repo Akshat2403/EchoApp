@@ -1,15 +1,14 @@
 import Audioimage from '../../assets/images/Audio-image.png';
 import '../../assets/styles/Audioplay.css';
 import Audiocontroller from './AudioController';
-
-const Audioplay = (data) => {
-    const info = data.data;
-    if (data.data) {
-        console.log(info);
-    }
+import useFetch from '../../features/usefetch';
+import { useParams } from 'react-router-dom';
+const Audioplay = () => {
+    const { id } = useParams();
+    const { data } = useFetch(`/audio/${id}`);
     return (
         <>
-            {info && (
+            {data && (
                 <div className="Audioplay-main">
                     <div className="Audioplay-image">
                         <img src={Audioimage} alt="" />
@@ -19,13 +18,13 @@ const Audioplay = (data) => {
                             Now Playing
                         </div>
                         <div className="Audioplay-details-audioname">
-                            <div>{info.title}</div>
+                            <div>{data?.title}</div>
                             <div className="Audioplay-details-audiosinger">
-                                {info.author.name}
+                                {data?.author.name}
                             </div>
                         </div>
                         <div className="Audioplay-controller">
-                            <Audiocontroller data={info} />
+                            <Audiocontroller data={data} />
                         </div>
                     </div>
                 </div>

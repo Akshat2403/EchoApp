@@ -5,8 +5,8 @@ import { FaPause } from 'react-icons/fa';
 
 import Backwardbtn from '../../assets/images/Bkbutton.png';
 import Forwardbtn from '../../assets/images/Forward.png';
-const Audiocontroller = (data) => {
-    const info = data.data;
+const Audiocontroller = ({ data }) => {
+    const info = data;
     console.log(info);
     // if (info) { console.log(data.data.url) }
 

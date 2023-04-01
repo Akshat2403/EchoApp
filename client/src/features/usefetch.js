@@ -3,30 +3,30 @@ import { useState, useEffect } from 'react';
 
 const useFetch = (url) => {
     let [data, setData] = useState(null);
-
+    let [isLoading, setLoading] = useState(false);
+    let [error, setError] = useState(null);
     useEffect(() => {
-        const abortCont = new AbortController();
         const fetch = async () => {
-            await Axios.get(
-                url,
-                {
-                    withCredentials: false,
-                },
-                { signal: abortCont.signal }
-            )
-                .then((response) => {
-                    setData(response.data);
-                })
-                .catch((err) => {
-                    console.log(err.message);
-                });
+            setLoading(true);
+            try {
+                const res = await Axios.get(url);
+                setData(res.data);
+                setLoading(false);
+            } catch (err) {
+                setError(false);
+            }
         };
         fetch();
-
-        return () => abortCont.abort;
     }, [url]);
-
-    return { data };
+    const refetch = async () => {
+        try {
+            const res = await Axios.get(url);
+            setData(res.data);
+        } catch (err) {
+            setError(err);
+        }
+    };
+    return { data, isLoading, error };
 };
 
 export default useFetch;

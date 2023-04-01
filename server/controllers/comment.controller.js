@@ -10,10 +10,13 @@ export const getAudioComments = async (req, res, next) => {
                 id: audioID,
             },
             include: {
-                comment: true,
+                comment: {
+                    include: { author: true },
+                },
             },
-        }).comment;
-        res.status(200).json({ comments: comments });
+        });
+        console.log(audioID);
+        res.status(200).json({ comments: comments.comment });
     } catch (err) {
         next(err);
     }
@@ -40,7 +43,7 @@ export const addComment = async (req, res, next) => {
                 },
             },
         });
-        res.status(201).json(comment);
+        res.status(201).json(req.body);
     } catch (err) {
         next(err);
     }
