@@ -15,7 +15,6 @@ export const getAudioComments = async (req, res, next) => {
                 },
             },
         });
-        console.log(audioID);
         res.status(200).json({ comments: comments.comment });
     } catch (err) {
         next(err);
@@ -25,7 +24,6 @@ export const addComment = async (req, res, next) => {
     try {
         const audioID = req.params.id;
         const userID = req.params.uid;
-        console.log(req.body);
         const comment = await prisma.audio.update({
             where: {
                 id: audioID,

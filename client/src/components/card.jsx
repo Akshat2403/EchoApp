@@ -1,30 +1,28 @@
-import playerlogo from '../assets/images/Player-logo.png'
-import { Link, useNavigate } from 'react-router-dom';
-import styles from '../assets/styles/profile.module.css';
+import playerlogo from '../assets/images/Audio.svg';
+import { Link } from 'react-router-dom';
+import styles from '../assets/styles/card.css';
+import useFetch from '../features/usefetch';
 
-const Card = ({ data }) => {
-    const navigate=useNavigate();
-    const handleclick=(id)=>{
-     navigate(`/audioplayer/${id}`)
-    }
+const Card = () => {
+    const User = JSON.parse(localStorage.getItem('user'));
+    const { data, isLoading, error } = useFetch(`/${User.id}`);
     return (
         <>
-            <div className={styles.Music_card_grid}>
+            <div className="Grid">
                 {data &&
                     data.audio.map((audio) => (
-                        <div
-                            onClick={()=>handleclick(audio.id)}
-                            className={styles.Music_song}
+                        <Link
+                            to={`/audioplayer/${audio.id}`}
+                            className="Music-card"
                             key={audio.id}
                         >
-                            <div className={styles.Music_card}>
+                            <div>
                                 <img src={playerlogo} alt="" />
                             </div>
-                            <div className={styles.Music_card_details}>
+                            <div className="Music-card-details">
                                 <div>{audio.title}</div>
-                                <div className={styles.Music_card_details_timing}></div>
                             </div>
-                        </div>
+                        </Link>
                     ))}
             </div>
         </>

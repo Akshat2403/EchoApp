@@ -1,10 +1,9 @@
-import styles from '../../assets/styles/signup.module.css';
+import styles from '../../assets/styles/login_signup.module.css';
+import logo from '../../assets/images/logo.svg';
 import { useState } from 'react';
 import Axios from '../../features/axios/axios';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import Logo from '../../components/Logo';
-import logo1 from '../../assets/images/logo1.png'
 
 const Signup = () => {
     const [email, setEmail] = useState('');
@@ -25,7 +24,6 @@ const Signup = () => {
             })
                 .then((response) => {
                     navigate('/login');
-                    console.log(response.data)
                 })
                 .catch((Error) => {
                     toast(Error.response.data.message);
@@ -37,76 +35,89 @@ const Signup = () => {
 
     return (
         <>
-            <Logo />
-            {/* {user ? user.id : null} */}
-            <div className={styles.Login_Page}>
-            <div className={styles.Logo_section}>
-                        <img src={logo1} alt="" />
+            <div className={styles.main_section}>
+                <Link
+                    to="/"
+                    className="Navcomp"
+                    style={{ marginBottom: '4vh' }}
+                >
+                    <img className="navimg" src={logo} alt="" />
+                    <div className="Heading-top" style={{ fontSize: '3vw' }}>
+                        Echo
                     </div>
-                <div className={styles.Login_section}>
-                    <form action="" onSubmit={handlesubmit}>
-                        <div className={styles.Signin_section_data}>
-                            <div className={styles.Login_heading}>Username</div>
-                            <div>
-                                <input
-                                    type="text"
-                                    className={styles.Input_type2}
-                                    required
-                                    value={name}
-                                    onChange={(e) => {
-                                        setName(e.target.value);
-                                    }}
-                                />
-                            </div>
-                            <div className={styles.Login_heading}>Email</div>
-                            <div>
-                                <input
-                                    type="email"
-                                    className={styles.Input_type2}
-                                    required
-                                    value={email}
-                                    onChange={(e) => {
-                                        setEmail(e.target.value);
-                                    }}
-                                />
-                            </div>
-                            <div className={styles.Login_heading}>Password</div>
-                            <div>
-                                <input
-                                    type="password"
-                                    className={styles.Input_type2}
-                                    required
-                                    value={password}
-                                    onChange={(e) => {
-                                        setPassword(e.target.value);
-                                    }}
-                                />
-                            </div>
-                            <div className={styles.Login_heading}>
-                                Confirm Password
-                            </div>
-                            <div>
-                                <input
-                                    type="password"
-                                    className={styles.Input_type2}
-                                    required
-                                    value={confirmpassword}
-                                    onChange={(e) => {
-                                        setConfirmPassword(e.target.value);
-                                    }}
-                                />
-                            </div>
-                            <div className={styles.Button_register}>
-                                <button
-                                    type="submit"
-                                    className={styles.Input_type_login}
-                                >
-                                    Register
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                </Link>
+                <form className={styles.Login_section} onSubmit={handlesubmit}>
+                    <div className={styles.login_heading}>
+                        Get started today!
+                    </div>
+                    <div className={styles.input_heading}>Full Name</div>
+                    <div>
+                        <input
+                            type="text"
+                            className={styles.Input_type}
+                            required
+                            value={name}
+                            onChange={(e) => {
+                                setName(e.target.value);
+                            }}
+                            placeholder="Enter your full name"
+                        />
+                    </div>
+                    <div className={styles.input_heading}>Email Address</div>
+                    <div>
+                        <input
+                            type="email"
+                            className={styles.Input_type}
+                            required
+                            value={email}
+                            onChange={(e) => {
+                                setEmail(e.target.value);
+                            }}
+                            placeholder="Enter email address"
+                        />
+                    </div>
+                    <div className={styles.input_heading}>Password</div>
+                    <div>
+                        <input
+                            type="password"
+                            className={styles.Input_type}
+                            required
+                            value={password}
+                            onChange={(e) => {
+                                setPassword(e.target.value);
+                            }}
+                            placeholder="Enter password"
+                        />
+                    </div>
+                    <div className={styles.input_heading}>Confirm Password</div>
+                    <div>
+                        <input
+                            type="password"
+                            className={styles.Input_type}
+                            required
+                            value={confirmpassword}
+                            onChange={(e) => {
+                                setConfirmPassword(e.target.value);
+                            }}
+                            placeholder="Re-Enter password"
+                        />
+                    </div>
+                    <div className={styles.Button_register}>
+                        <button
+                            type="submit"
+                            className={styles.Input_type_login}
+                        >
+                            Register
+                        </button>
+                    </div>
+                    <div className={styles.Register}>
+                        Already have an account?
+                        <span>
+                            {' '}
+                            <Link to="/Login">Login</Link>
+                        </span>
+                    </div>
+                </form>
             </div>
         </>
     );

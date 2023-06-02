@@ -1,7 +1,7 @@
 import Navbar from '../../components/Navbar/Navbar';
-import Audiocollection from '../../components/Comment/Audio-Collection';
-import Comment from '../../components/Comment/Comment';
-import Audioplay from '../../components/Comment/Audioplay';
+import Audiocollection from '../../components/Player/AudioCollection';
+import Comment from '../../components/Player/Comment';
+import Audioplay from '../../components/Player/AudioPlay';
 const Player = () => {
     return (
         <>

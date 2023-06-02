@@ -1,29 +1,4 @@
-body {
-    margin: 0%;
-}
-.Heading_top {
-    text-align: center;
-    font-size: 1.4vw;
-    color: white;
-}
-.Navbar {
-    height: 12vh;
-    width: 100vw;
-    display: flex;
-    justify-content: space-between;
-    padding-left: 2vw;
-    padding-top: 2vh;
-    padding-right: 2vw;
-    box-sizing: border-box;
-}
-.Navbar img {
-    width: 6vh;
-    height: 6vh;
-}
 .Userprofile_page {
-    background-image: url('../images/background-login.png');
-    background-repeat: no-repeat;
-    height: auto;
     width: 100vw;
     display: flex;
     background-size: 100vw 500vh;
@@ -35,7 +10,6 @@ body {
     text-align: center;
     font-size: 1.4vw;
     color: white;
-
     justify-content: space-between;
 }
 .User_img .div {
@@ -115,17 +89,14 @@ body {
     margin-bottom: 10vh;
 }
 .User_profile_img {
-    background: linear-gradient(
-        133.38deg,
-        #321f3a 18.42%,
-        rgba(77, 61, 85, 0.866965) 56.43%,
-        rgba(142, 132, 147, 0.551338) 75.05%,
-        rgba(255, 255, 255, 0) 107.56%
-    );
-    filter: drop-shadow(28px 28px 4px #190321);
-    width: 30vh;
-    height: 30vh;
-    margin-right: 4vw;
+    background-color: #272735;
+    width: 18vw;
+    height: 18vw;
+    border-radius: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 .User_profile_img img {
     height: 100%;
@@ -190,13 +161,12 @@ body {
     align-items: center;
     justify-content: center;
     border-radius: 30px;
-    background: rgba(235, 219, 255, 0.34);
+    background: #272735;
     min-height: 40px;
     font-style: normal;
     font-weight: 700;
     font-size: 2vw;
     text-align: center;
-    color: #ffffff;
     margin-right: 3vw;
 }
 .User_profile_details_upload_youtube {
@@ -207,7 +177,7 @@ body {
     align-items: center;
     justify-content: center;
     border-radius: 30px;
-    background: rgba(235, 219, 255, 0.34);
+    background: #272735;
     min-height: 40px;
     font-style: normal;
     font-weight: 700;

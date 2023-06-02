@@ -18,13 +18,14 @@
 }
 
 .playPause {
-    background: radial-gradient(
+    /* background: radial-gradient(
         58.99% 58.99% at 49.84% 49.92%,
         #c89dff 27.92%,
         #7a51af 68.02%,
         #6308d8 100%
-    ) !important /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
-    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1);
+    ) !important warning: gradient uses a rotation that is not supported by CSS and may not behave as expected; */
+    /* box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1); */
+    background-color:#6254FF;
     border: none;
     border-radius: 50%;
     width: 50px;
@@ -38,7 +39,7 @@
 
 .play {
     position: relative;
-    left: 5px;
+    left: 2px;
 }
 
 .currentTime,
@@ -50,11 +51,11 @@
 }
 
 .progressBar {
-    --bar-bg: rgba(200, 157, 255, 0.22);
+    --bar-bg: #272735;
     --seek-before-width: 0;
-    --seek-before-color: #c89dff;
-    --knobby: #c89dff;
-    --selectedKnobby: #d9d9d9;
+    --seek-before-color: #6254FF;
+    --knobby: #6254FF;
+    --selectedKnobby: #6254FF;
 
     appearance: none;
     background: var(--bar-bg);

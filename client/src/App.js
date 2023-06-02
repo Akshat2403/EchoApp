@@ -41,6 +41,7 @@ function App() {
                 pauseOnHover
                 theme="dark"
             />
+            <div className='footer'></div>
         </>
     );
 }

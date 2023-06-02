@@ -1,44 +1,8 @@
-body {
-    margin: 0%;
-    background-image: url('../images/Background-search.png');
-
-}
-.Heading-top {
-    text-align: center;
-    font-size: 1.4vw;
-    color: white;
-}
-.Navbar {
-    height: 12vh;
-    width: 100vw;
-    display: flex;
-    justify-content: space-between;
-    padding-left: 2vw;
-    padding-top: 2vh;
-    padding-right: 2vw;
-    box-sizing: border-box;
-}
-.Navbar img {
-    width: 6vh;
-    height: 6vh;
-}
-.Upload-page {
-    background-image: url('../images/Background-search.png');
-    background-repeat: no-repeat;
-    height: 100vh;
-    width: 90vw;
-    display: flex;
-    background-size: 100vw 100vh;
-    flex-direction: column;
-    align-items: center;
-    padding: 0vh 5vw;
-}
 .User-img {
     display: flex;
     text-align: center;
     font-size: 1.4vw;
     color: white;
-
     justify-content: space-between;
 }
 .User-img .div {
@@ -57,7 +21,6 @@ body {
 }
 .Upload-item {
     display: flex;
-    height: 88vh;
     padding: 0 5vw;
 }
 .Upload-item-link {
@@ -67,36 +30,17 @@ body {
     flex-direction: column;
     width: 25vw;
 }
-.Music-card {
-    background: linear-gradient(
-        133.38deg,
-        #321f3a 18.42%,
-        rgba(77, 61, 85, 0.866965) 56.43%,
-        rgba(142, 132, 147, 0.551338) 75.05%,
-        rgba(255, 255, 255, 0) 107.56%
-    );
-    filter: drop-shadow(15px 15px 4px #190321);
-    width: 18vw !important;
-    height: 25vh !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.Music-card img {
-    width: 12vw !important;
-    height: 12vw !important;
-}
 .link {
     color: white;
     font-size: 2vw;
     margin-top: 6vh;
-    width: 22vw;
+    width: 18vw;
     height: 7vh;
     min-height: 30px;
     max-height: 50px;
     padding: 0.5vh 0vw;
-    background: rgba(183, 142, 236, 0.59);
-    box-shadow: 19px 19px 4px rgba(0, 0, 0, 0.25);
+    background: #6254FF;
+    border-radius: 4vw;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -104,7 +48,7 @@ body {
 
 .Upload-item-details {
     width: 65vw;
-    height: 88vh;
+    margin-top: 5vh;
     display: flex;
     flex-direction: column;
 
@@ -120,13 +64,16 @@ body {
 }
 .Upload-item-details input,
 .Upload-item-details textarea {
-    fill: none;
-    border: 2px solid #c89dff;
-    border-radius: 19px;
-    background-color: transparent;
     color: #ffffff;
-    width: 35vw;
-    padding: 0vh 2vw;
+    box-sizing: border-box;
+    padding: 1vw;
+    background-color: #272735;
+    height: 40px;
+    width: 40vw;
+    border-radius: 2vw;
+    padding: 2vw;
+    outline: none;
+    border: none;
 }
 .Upload-item-details input:focus,
 .Upload-item-details textarea:focus {
@@ -185,33 +132,44 @@ body {
     margin-bottom: 4vh;
 }
 .Audioformat select {
-    height: 5vh;
-    width: 15vw !important;
-    background-color: transparent;
-    border: 2px solid #c89dff;
-    border-radius: 19px;
-    color: white;
+    color: #ffffff;
     box-sizing: border-box;
-    padding: 0.5vh 1vw;
+    padding: 1vw;
+    background-color: #272735;
+    height: 40px;
+    width: 40vw;
+    border-radius: 2vw;
+    padding: 2vw;
+    outline: none;
+    border: none;
 }
 
-.Audioformat select:focus {
+/* .Audioformat select:focus {
     border: 2px solid #c89dff;
-}
+} */
 .Audioformat select option {
     color: white;
-    background-color: #c89dff;
+    background-color: #272735;
     border-radius: 19px;
+    outline: none;
+    border: none;
 }
 .submit-button {
     margin-left: 30vw;
 }
 .submit-button button {
-    height: 5vh;
-    width: 15vw !important;
-    background-color: transparent;
-    border: 2px solid #c89dff;
-    border-radius: 19px;
     color: white;
-    box-sizing: border-box;
+    font-size: 2vw;
+    margin-top: 6vh;
+    width: 18vw;
+    height: 7vh;
+    min-height: 30px;
+    max-height: 50px;
+    padding: 0.5vh 0vw;
+    background: #6254FF;
+    border-radius: 4vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
 }

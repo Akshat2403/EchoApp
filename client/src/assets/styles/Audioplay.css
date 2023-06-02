@@ -12,7 +12,6 @@
 .Audioplay-image {
     width: 37vh;
     height: 40vh;
-    filter: drop-shadow(15px 15px 4px #190321);
     display: flex;
     align-items: center;
     justify-content: left;
@@ -20,9 +19,6 @@
 .Audioplay-image img {
     width: 30vh;
     height: 30vh;
-}
-body {
-    margin: 0px;
 }
 .Audioplay-details {
     display: flex;

@@ -1,50 +1,66 @@
-import logo from '../../assets/images/logo1.png';
-import userlogo from '../../assets/images/User-logo.png';
-import '../../assets/styles/Upload.css';
-import axios from 'axios';
+import logo from '../../assets/images/logo.svg';
+import userlogo from '../../assets/images/User.svg';
+import '../../assets/styles/navbar.css';
+import search from '../../assets/images/search.svg';
 import { useNavigate, Link } from 'react-router-dom';
+import axios from 'axios';
+import { useState } from 'react';
 const Navbar = () => {
-    const auth = localStorage.getItem('user');
+    const auth = JSON.parse(localStorage.getItem('user'));
     const navigate = useNavigate();
-
-    const handleLogout = () => {
-        localStorage.clear();
-        axios.get('http://localhost:5000/logout', {
-            withCredentials: true,
-        });
-        navigate('/');
+    const [query, setQuery] = useState('');
+    const handleLogout = async () => {
+        try {
+            await axios.get('/logout', {
+                withCredentials: true,
+            });
+            localStorage.clear();
+            navigate('/');
+        } catch (err) {}
+    };
+    const handleSearch = () => {
+        navigate(`/?search=${query}`);
     };
     return (
         <>
             <div className="Navbar">
                 <div>
-                    <div>
-                        <Link to="/">
-                            {' '}
-                            <img src={logo} alt="" />
-                        </Link>
-                    </div>
-                    <div className="Heading-top">Echo</div>
+                    <Link to="/" className="Navcomp">
+                        <img className="navimg" src={logo} alt="" />
+                        <div className="Heading-top">Echo</div>
+                    </Link>
+                </div>
+                <div className="search">
+                    <input
+                        type="text"
+                        className="searchbox"
+                        placeholder="Search"
+                        onChange={(e) => setQuery(e.target.value)}
+                    />
+                    <button className="button1" onClick={handleSearch}>
+                        <img className="searchicon" src={search} alt="" />
+                    </button>
                 </div>
                 <div className="User-img">
                     {auth && (
                         <>
-                            <div>
+                            <div className="Navcomp">
                                 <Link to="/profile">
-                                    {' '}
-                                    <img src={userlogo} alt="" />
+                                    <img
+                                        src={userlogo}
+                                        className="userlogo navimg"
+                                        alt=""
+                                    />
                                 </Link>
-                            </div>
-                            <div className="div" onClick={handleLogout}>
-                                Logout
+                                <div onClick={handleLogout}>Logout</div>
                             </div>
                         </>
                     )}
                     {!auth && (
                         <>
                             <div className="div">
-                                <Link to="/login">Login</Link>/
-                                <Link to="/signup">signup</Link>
+                                <Link to="/login">Login &nbsp;/</Link>
+                                <Link to="/signup">&nbsp;Signup</Link>
                             </div>
                         </>
                     )}
