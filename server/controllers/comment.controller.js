@@ -10,10 +10,12 @@ export const getAudioComments = async (req, res, next) => {
                 id: audioID,
             },
             include: {
-                comment: true,
+                comment: {
+                    include: { author: true },
+                },
             },
-        }).comment;
-        res.status(200).json({ comments: comments });
+        });
+        res.status(200).json({ comments: comments.comment });
     } catch (err) {
         next(err);
     }
@@ -22,7 +24,6 @@ export const addComment = async (req, res, next) => {
     try {
         const audioID = req.params.id;
         const userID = req.params.uid;
-        console.log(req.body);
         const comment = await prisma.audio.update({
             where: {
                 id: audioID,
@@ -40,7 +41,7 @@ export const addComment = async (req, res, next) => {
                 },
             },
         });
-        res.status(201).json(comment);
+        res.status(201).json(req.body);
     } catch (err) {
         next(err);
     }

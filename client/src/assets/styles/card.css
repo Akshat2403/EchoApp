@@ -1,0 +1,15 @@
+.Music-card {
+    background-color: #272735;
+    width: 18vw;
+    min-width: 150px;
+    height: 40vh;
+    border-radius: 1vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.Music-card img {
+    width: 12vw;
+    height: 12vw;
+}

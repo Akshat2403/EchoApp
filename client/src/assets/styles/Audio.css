@@ -1,0 +1,12 @@
+.Audio-player {
+    /* background-image: url('../images/Background-search.png'); */
+    background-repeat: no-repeat;
+    height: auto;
+    width: 100vw;
+    display: flex;
+    background-size: 100vw 500vh;
+    flex-direction: column;
+    min-height: 100vh;
+    align-items: center;
+    padding-bottom: 10vh;
+}

@@ -5,6 +5,7 @@ import fs from 'fs';
 import { dirname } from 'path';
 import createError from '../utils/error.js';
 import { v4 as uuidv4 } from 'uuid';
+import { title } from 'process';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
@@ -53,7 +54,36 @@ const createAudio = async (req, audioName) => {
 };
 export const getAudioAll = async (req, res, next) => {
     try {
-        const audio = await prisma.audio.findMany();
+        var audio;
+        if (Object.keys(req.query).length != 0) {
+            if ((req.query.search = null)) {
+                audio = null;
+            } else {
+                audio = await prisma.audio.findMany({
+                    where: {
+                        OR: [
+                            {
+                                title: {
+                                    contains: req.query.search,
+                                    mode: 'insensitive',
+                                },
+                            },
+                            {
+                                description: {
+                                    contains: req.query.search,
+                                    mode: 'insensitive',
+                                },
+                            },
+                        ],
+                    },
+                    include: { author: true },
+                });
+            }
+        } else {
+            audio = await prisma.audio.findMany({
+                include: { author: true },
+            });
+        }
         res.status(200).json(audio);
     } catch (err) {
         next(err);
@@ -91,7 +121,6 @@ export const addAudio = async (req, res, next) => {
         const audioName = `${uuidv4()}`;
         await uploadConverter(req.file.filename, req.body.format, audioName);
         const audio = await createAudio(req, audioName);
-        console.log('sadf');
         res.status(201).json(audio);
     } catch (err) {
         next(err);
@@ -100,7 +129,6 @@ export const addAudio = async (req, res, next) => {
 
 export const addAudioYT = async (req, res, next) => {
     try {
-        console.log(req.body);
         const audioName = `${uuidv4()}`;
         const VideoSource = uuidv4();
         await youtubeConverter(

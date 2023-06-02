@@ -7,9 +7,8 @@ import {
 } from '../controllers/user.controller.js';
 const router = Router();
 // Add paths here
-// console.log(register)
 router.post('/login', login);
 router.post('/register', register);
-router.get('/:uid', getUser);
 router.get('/logout', logout);
+router.get('/:uid', getUser);
 export default router;
