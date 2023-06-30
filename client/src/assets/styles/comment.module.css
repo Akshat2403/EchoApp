@@ -1,0 +1,62 @@
+.comment_section{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+}
+.comment_box{
+    border-radius: 1vw;
+    padding: 2vw;
+    width: 90vw;
+    box-sizing: border-box;
+    background-color: #272735;
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+}
+.header_left{
+    display: flex;
+    gap: 1vw;
+}
+.form{
+    margin-top: 2vh;
+    justify-content: space-between;
+    display: flex;
+}
+.inputbox{
+    color: #ffffff;
+    box-sizing: border-box;
+    padding: 1vw;
+    background-color: #222131;
+    height: 40px;
+    width: 70vw;
+    border-radius: 4vw;
+    outline: none;
+    border: none;
+}
+.button{
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 64px;
+    border-radius: 4vw;
+    background-color: #6254FF;
+    border: #6254FF 1px ;
+}
+.comments{
+    margin-top: 5vh;
+    display: flex;
+    gap: 2vw;
+}
+.comments img{
+    width: 40px;
+}
+.comment_unique{
+    display: flex;
+    flex-direction: column;
+}
+.comment_desc{
+    font-size: 1.2vw;
+}

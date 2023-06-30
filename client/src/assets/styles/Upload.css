@@ -1,0 +1,175 @@
+.User-img {
+    display: flex;
+    text-align: center;
+    font-size: 1.4vw;
+    color: white;
+    justify-content: space-between;
+}
+.User-img .div {
+    display: flex;
+    align-items: center;
+    height: 6vh;
+    margin-left: 3.5vw;
+}
+@media screen and (max-width: 800px) {
+    .User-img {
+        font-size: 2.7vw;
+    }
+    .Heading-top {
+        font-size: 2.7vw;
+    }
+}
+.Upload-item {
+    display: flex;
+    padding: 0 5vw;
+}
+.Upload-item-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 25vw;
+}
+.link {
+    color: white;
+    font-size: 2vw;
+    margin-top: 6vh;
+    width: 18vw;
+    height: 7vh;
+    min-height: 30px;
+    max-height: 50px;
+    padding: 0.5vh 0vw;
+    background: #6254FF;
+    border-radius: 4vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Upload-item-details {
+    width: 65vw;
+    margin-top: 5vh;
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+}
+
+.Upload-item-details label {
+    width: 20vw;
+}
+.Upload-item-details div {
+    display: flex;
+    align-items: flex-start;
+}
+.Upload-item-details input,
+.Upload-item-details textarea {
+    color: #ffffff;
+    box-sizing: border-box;
+    padding: 1vw;
+    background-color: #272735;
+    height: 40px;
+    width: 40vw;
+    border-radius: 2vw;
+    padding: 2vw;
+    outline: none;
+    border: none;
+}
+.Upload-item-details input:focus,
+.Upload-item-details textarea:focus {
+    outline: none;
+}
+.Upload-item-details label {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 2vw;
+
+    color: #ffffff;
+}
+@media screen and (max-width: 800px) {
+    .link {
+        min-height: 30px;
+
+        max-height: 30px;
+    }
+}
+.title {
+    margin-bottom: 8vh;
+}
+.Yt-link {
+    margin-bottom: 8vh;
+}
+.title input {
+    height: 7vh;
+    max-height: 40px;
+}
+.title1 input {
+    height: 7vh;
+    max-height: 40px;
+}
+.title1 {
+    margin-bottom: 4vh;
+}
+.Yt-link input {
+    height: 7vh;
+    max-height: 40px;
+}
+.Description {
+    margin-bottom: 8vh;
+}
+.Description textarea {
+    height: 20vh;
+    padding-top: 1vh;
+}
+.Tags {
+    margin-bottom: 8vh;
+}
+.Tags textarea {
+    height: 10vh;
+    padding-top: 1vh;
+}
+.Audioformat {
+    margin-bottom: 4vh;
+}
+.Audioformat select {
+    color: #ffffff;
+    box-sizing: border-box;
+    padding: 1vw;
+    background-color: #272735;
+    height: 40px;
+    width: 40vw;
+    border-radius: 2vw;
+    padding: 2vw;
+    outline: none;
+    border: none;
+}
+
+/* .Audioformat select:focus {
+    border: 2px solid #c89dff;
+} */
+.Audioformat select option {
+    color: white;
+    background-color: #272735;
+    border-radius: 19px;
+    outline: none;
+    border: none;
+}
+.submit-button {
+    margin-left: 30vw;
+}
+.submit-button button {
+    color: white;
+    font-size: 2vw;
+    margin-top: 6vh;
+    width: 18vw;
+    height: 7vh;
+    min-height: 30px;
+    max-height: 50px;
+    padding: 0.5vh 0vw;
+    background: #6254FF;
+    border-radius: 4vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}

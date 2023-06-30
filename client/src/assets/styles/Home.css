@@ -1,0 +1,22 @@
+.Grid {
+    width: 90vw;
+    margin-top: 5vh;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat( auto-fit, minmax(200px, 1fr) );
+    gap:2vw;
+}
+.Music-player {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    justify-content: space-evenly;
+    padding: 5vh 5vw;
+    box-sizing: border-box;
+}
+.Home {
+    width: 100vw;
+}
+.artist{
+    color: #6254FF;
+}
