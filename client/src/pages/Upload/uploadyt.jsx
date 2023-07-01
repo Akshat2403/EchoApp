@@ -40,7 +40,8 @@ const UploadYt = () => {
                         navigate('/profile');
                     }
                 });
-        } catch (err) {}
+        } catch (err) {
+        }
     };
     return (
         <>

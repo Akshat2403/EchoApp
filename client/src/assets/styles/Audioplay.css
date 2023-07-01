@@ -5,7 +5,7 @@
     display: flex;
 
     padding: 0vh 5vw;
-    width: 100vw;
+    width: 100%;
     box-sizing: border-box;
     align-items: center;
 }
@@ -62,10 +62,9 @@ audio {
     border: none;
 }
 .Audioplay-controller div button img {
-    height: 50px;
-    width: 50px;
+    width: calc(20px + 1vw);
 }
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 680px) {
     .Audioplay-image img {
         width: 30vw;
         height: 30vw;

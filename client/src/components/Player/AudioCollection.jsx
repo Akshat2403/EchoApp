@@ -3,8 +3,7 @@ import useFetch from '../../features/usefetch';
 import playerlogo from '../../assets/images/Audio.svg';
 import { Link } from 'react-router-dom';
 const Audiocollection = () => {
-    const { data, isLoading, error } = useFetch('/audio');
-    
+    const { data } = useFetch('/audio');
     return (
         <>
             <div className="Music-player">
@@ -16,9 +15,8 @@ const Audiocollection = () => {
                                 className="Music-card"
                                 key={audio.id}
                             >
-                                <div>
-                                    <img src={playerlogo} alt="" />
-                                </div>
+                                <img src={playerlogo} alt="" />
+
                                 <div>
                                     <div>{audio.title}</div>
                                     <div className="artist">

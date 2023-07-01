@@ -3,7 +3,9 @@ import '../../assets/styles/Audioplay.css';
 import Audiocontroller from './AudioController';
 import useFetch from '../../features/usefetch';
 import { useParams } from 'react-router-dom';
-const Audioplay = () => {
+
+const Audioplay = ({ audioRef, progressBar }) => {
+
     const { id } = useParams();
     const { data } = useFetch(`/audio/${id}`);
     return (
@@ -24,7 +26,11 @@ const Audioplay = () => {
                             </div>
                         </div>
                         <div className="Audioplay-controller">
-                            <Audiocontroller data={data} />
+                            <Audiocontroller
+                                data={data}
+                                audioRef={audioRef}
+                                progressBar={progressBar}
+                            />
                         </div>
                     </div>
                 </div>

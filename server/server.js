@@ -3,7 +3,6 @@ import express from 'express';
 import helmet from 'helmet';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
-
 import audioRoutes from './routes/audio.routes.js';
 import commentRoutes from './routes/comment.routes.js';
 import userRoutes from './routes/user.routes.js';

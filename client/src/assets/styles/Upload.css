@@ -143,10 +143,6 @@
     outline: none;
     border: none;
 }
-
-/* .Audioformat select:focus {
-    border: 2px solid #c89dff;
-} */
 .Audioformat select option {
     color: white;
     background-color: #272735;

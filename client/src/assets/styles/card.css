@@ -1,8 +1,7 @@
 .Music-card {
     background-color: #272735;
-    width: 18vw;
-    min-width: 150px;
-    height: 40vh;
+    height: 250px;
+    max-width: 400px;
     border-radius: 1vw;
     display: flex;
     flex-direction: column;
@@ -10,6 +9,6 @@
     justify-content: center;
 }
 .Music-card img {
-    width: 12vw;
-    height: 12vw;
+    width: 30%;
+    margin-bottom: 5%;
 }

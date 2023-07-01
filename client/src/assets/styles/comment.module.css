@@ -1,5 +1,5 @@
 .comment_section{
-    width: 100vw;
+    width: 100%;
     display: flex;
     justify-content: center;
 }
@@ -26,11 +26,20 @@
 .inputbox{
     color: #ffffff;
     box-sizing: border-box;
-    padding: 1vw;
+    padding: calc(8px + 1vw);
     background-color: #222131;
     height: 40px;
     width: 70vw;
     border-radius: 4vw;
+    outline: none;
+    border: none;
+}
+.inputtime{
+    color: #ffffff;
+    box-sizing: border-box;
+    background-color: #222131;
+    width: 20px;
+    height: 40px;
     outline: none;
     border: none;
 }
@@ -45,18 +54,38 @@
     background-color: #6254FF;
     border: #6254FF 1px ;
 }
+
 .comments{
     margin-top: 5vh;
     display: flex;
     gap: 2vw;
+    display: flex;
+    justify-content: space-between;
 }
 .comments img{
     width: 40px;
 }
+.message{
+    display: flex;
+    gap: 2vw;
+}
 .comment_unique{
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 }
 .comment_desc{
     font-size: 1.2vw;
+}
+.downarrow{
+    width: 1.5vw;
+     max-width: 40px;
+}
+.uparrow{
+    width: 1.5vw;
+     max-width: 40px;
+     transform: rotate(180deg);
+}
+.hide{
+    display: none;
 }

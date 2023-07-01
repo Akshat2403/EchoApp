@@ -10,8 +10,6 @@ import Navbar from '../../components/Navbar/Navbar';
 
 const Profile = () => {
     const User = JSON.parse(localStorage.getItem('user'));
-    let url = `/${User.id}`;
-    const { data, isLoading, error } = useFetch(url);
     return (
         <>
             <div className={styles.Userprofile_page}>
@@ -38,7 +36,7 @@ const Profile = () => {
                                 }
                             >
                                 {' '}
-                                <Link to="/upload">Upload a video </Link>
+                                <Link to="/upload">Upload a video</Link>
                             </div>
                             <div
                                 className={
@@ -47,7 +45,8 @@ const Profile = () => {
                             >
                                 {' '}
                                 <Link to="/upload/yt">
-                                    Upload using <img src={yt} alt="" /> video
+                                    Upload using{' '}
+                                    <img src={yt} width={'15%'} alt="" /> video
                                 </Link>
                             </div>
                         </div>

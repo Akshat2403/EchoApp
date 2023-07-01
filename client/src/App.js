@@ -1,17 +1,16 @@
 import './App.css';
 import React from 'react';
 import { ToastContainer } from 'react-toastify';
-
 import 'react-toastify/dist/ReactToastify.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Error from './pages/404/404';
 import Signup from './pages/Signup/Signup';
 import Login from './pages/Login/Login';
 import Profile from './pages/Profile/profile';
-import Player from './pages/Player/Player'
+import Player from './pages/Player/Player';
 import Upload from './pages/Upload/upload';
 import UploadYt from './pages/Upload/uploadyt';
-import Home from './pages/Landing-page/landing';
+import Home from './pages/Landing/landing';
 
 function App() {
     return (
@@ -41,7 +40,7 @@ function App() {
                 pauseOnHover
                 theme="dark"
             />
-            <div className='footer'></div>
+            <div className="footer"></div>
         </>
     );
 }

@@ -4,25 +4,19 @@ import pause from '../../assets/images/pause.svg';
 import play from '../../assets/images/play.svg';
 import Backwardbtn from '../../assets/images/backward.svg';
 import Forwardbtn from '../../assets/images/forward.svg';
-const Audiocontroller = ({ data }) => {
-    const info = data;
-    const [isPlaying, setIsPlaying] = useState(false);
+import { useDispatch, useSelector } from 'react-redux';
+import { togglePlaying, toggletime } from '../../features/store/playerReducer';
+const Audiocontroller = ({ data, audioRef, progressBar }) => {
+    const dispatch = useDispatch();
+    const { playing, time } = useSelector((state) => state.Player);
     const [duration, setDuration] = useState(0);
-    const [currentTime, setCurrentTime] = useState(0);
-
-    // references
-    const audioPlayer = useRef(); // reference our audio component
-    const progressBar = useRef(); // reference our progress bar
     const animationRef = useRef(); // reference the animation
 
     useEffect(() => {
-        const seconds = Math.floor(audioPlayer.current.duration);
+        const seconds = Math.floor(audioRef.current.duration);
         setDuration(seconds);
         progressBar.current.max = seconds;
-    }, [
-        audioPlayer?.current?.loadedmetadata,
-        audioPlayer?.current?.readyState,
-    ]);
+    }, [audioRef?.current?.loadedmetadata, audioRef?.current?.readyState]);
 
     const calculateTime = (secs) => {
         const minutes = Math.floor(secs / 60);
@@ -33,25 +27,26 @@ const Audiocontroller = ({ data }) => {
     };
 
     const togglePlayPause = () => {
-        const prevValue = isPlaying;
-        setIsPlaying(!prevValue);
+        console.log(playing);
+        const prevValue = playing;
+        dispatch(togglePlaying());
         if (!prevValue) {
-            audioPlayer.current.play();
+            audioRef.current.play();
             animationRef.current = requestAnimationFrame(whilePlaying);
         } else {
-            audioPlayer.current.pause();
+            audioRef.current.pause();
             cancelAnimationFrame(animationRef.current);
         }
     };
 
     const whilePlaying = () => {
-        progressBar.current.value = audioPlayer.current.currentTime;
+        progressBar.current.value = audioRef.current.currentTime;
         changePlayerCurrentTime();
         animationRef.current = requestAnimationFrame(whilePlaying);
     };
 
     const changeRange = () => {
-        audioPlayer.current.currentTime = progressBar.current.value;
+        audioRef.current.currentTime = progressBar.current.value;
         changePlayerCurrentTime();
     };
 
@@ -60,7 +55,7 @@ const Audiocontroller = ({ data }) => {
             '--seek-before-width',
             `${(progressBar.current.value / duration) * 100}%`
         );
-        setCurrentTime(progressBar.current.value);
+        dispatch(toggletime(progressBar.current.value));
     };
 
     const backThirty = () => {
@@ -72,14 +67,13 @@ const Audiocontroller = ({ data }) => {
         progressBar.current.value = Number(progressBar.current.value + 5);
         changeRange();
     };
-    // const audio=useFetch(`http://localhost:5000/audio/${}`)
     return (
         <>
-            {info && (
+            {data && (
                 <div className={styles.audioPlayer}>
                     <audio
-                        ref={audioPlayer}
-                        src={`http://localhost:5000/audio/${info.url}.${info.format}`}
+                        ref={audioRef}
+                        src={`http://localhost:5000/audio/${data.url}.${data.format}`}
                         preload="metadata"
                     ></audio>
                     <div className={styles.audiobutton}>
@@ -93,7 +87,7 @@ const Audiocontroller = ({ data }) => {
                             onClick={togglePlayPause}
                             className={styles.playPause}
                         >
-                            {isPlaying ? (
+                            {playing ? (
                                 <img src={pause} alt="" />
                             ) : (
                                 <img src={play} alt="" />
@@ -109,7 +103,7 @@ const Audiocontroller = ({ data }) => {
                     {/* current time */}
                     <div className={styles.progressbuttonmain}>
                         <div className={styles.currentTime}>
-                            {calculateTime(currentTime)}
+                            {calculateTime(time)}
                         </div>
 
                         {/* progress bar */}

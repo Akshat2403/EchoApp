@@ -2,7 +2,7 @@
     /* background-image: url('../images/Background-search.png'); */
     background-repeat: no-repeat;
     height: auto;
-    width: 100vw;
+    width: 100%;
     display: flex;
     background-size: 100vw 500vh;
     flex-direction: column;

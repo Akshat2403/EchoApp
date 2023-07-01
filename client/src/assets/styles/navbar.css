@@ -19,7 +19,7 @@
     border: #6254FF 1px ;
 }
 .searchicon{
-    width: 2vw;
+    width: 40%;
 }
 .search{
     display: flex;
@@ -28,7 +28,7 @@
 .searchbox{
     color: #ffffff;
     box-sizing: border-box;
-    padding: 1vw;
+    padding: calc(8px + 1vw);
     background-color: #272735;
     height: 40px;
     width: 24vw;
@@ -38,7 +38,7 @@
 }
 .Navbar {
     height: 12vh;
-    width: 100vw;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -50,4 +50,21 @@
 .navimg {
     width: 6vh;
     height: 6vh;
+}
+
+.search_mobile{
+display: none;
+}
+@media screen and (max-width: 680px) {
+    .search{
+        display: none;
+    }
+    .search_mobile{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .searchbox{
+        width: 60vw;
+    }
 }

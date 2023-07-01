@@ -66,6 +66,17 @@ const Navbar = () => {
                     )}
                 </div>
             </div>
+            <div className="search_mobile">
+                <input
+                    type="text"
+                    className="searchbox"
+                    placeholder="Search"
+                    onChange={(e) => setQuery(e.target.value)}
+                />
+                <button className="button1" onClick={handleSearch}>
+                    <img className="searchicon" src={search} alt="" />
+                </button>
+            </div>
         </>
     );
 };

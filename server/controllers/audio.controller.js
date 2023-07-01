@@ -56,9 +56,11 @@ export const getAudioAll = async (req, res, next) => {
     try {
         var audio;
         if (Object.keys(req.query).length != 0) {
-            if ((req.query.search = null)) {
+            if (req.query.search == null) {
                 audio = null;
             } else {
+                console.log(req.query);
+
                 audio = await prisma.audio.findMany({
                     where: {
                         OR: [
@@ -120,7 +122,6 @@ export const addAudio = async (req, res, next) => {
     try {
         const audioName = `${uuidv4()}`;
         await uploadConverter(req.file.filename, req.body.format, audioName);
-
         const audio = await createAudio(req, audioName);
         res.status(201).json(audio);
     } catch (err) {
