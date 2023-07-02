@@ -8,7 +8,7 @@ import commentRoutes from './routes/comment.routes.js';
 import userRoutes from './routes/user.routes.js';
 
 const app = express();
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`Listening to Port ${PORT}`);
 });
@@ -30,8 +30,8 @@ app.use(
 app.use('/audio', audioRoutes);
 app.use('/comment', commentRoutes);
 app.use('', userRoutes);
-
 app.use((err, req, res, next) => {
+    console.log('sdaf');
     const status = err.code || 500;
     const msg = err.message || 'Something went wrong';
     return res.status(status).json({

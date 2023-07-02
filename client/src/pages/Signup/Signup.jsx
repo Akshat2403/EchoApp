@@ -2,6 +2,7 @@ import styles from '../../assets/styles/login_signup.module.css';
 import logo from '../../assets/images/logo.svg';
 import { useState } from 'react';
 import Axios from '../../features/axios/axios';
+import axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
@@ -19,7 +20,7 @@ const Signup = () => {
 
         if (password === confirmpassword) {
             const User = { email, name, password };
-            await Axios.post('/register', User, {
+            await axios.post('/register', User, {
                 headers: { 'Content-Type': 'application/json' },
             })
                 .then((response) => {

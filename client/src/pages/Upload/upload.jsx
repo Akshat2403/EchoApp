@@ -3,6 +3,7 @@ import Navbar from '../../components/Navbar/Navbar';
 import playerlogo from '../../assets/images/Audio.svg';
 import '../../assets/styles/Upload.css';
 import Axios from '../../features/axios/axios';
+import axios from 'axios';
 import { Navigate, useNavigate } from 'react-router-dom';
 
 const Upload = () => {
@@ -10,7 +11,7 @@ const Upload = () => {
     const [uploadVideo, setUploadVideo] = useState();
     const [title, setTitle] = useState('');
     const [desc, setDesc] = useState('');
-    const [tag, setTag] = useState([]);
+    // const [tag, setTag] = useState([]);
     const [format, setFormat] = useState('');
     const [ispending, setIspending] = useState(false);
     const navigate = useNavigate();
@@ -21,20 +22,22 @@ const Upload = () => {
         formData.append('uploadVideo', uploadVideo);
         formData.append('title', title);
         formData.append('description', desc);
-        formData.append('tag', tag);
+        // formData.append('tag', tag);
         formData.append('format', format);
 
         try {
-            await Axios.post(`/audio/${User.id}`, formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                },
-                withCredentials: true,
-            }).then((data) => {
-                if (data) {
-                    navigate('/profile');
-                }
-            });
+            await axios
+                .post(`/audio/${User.id}`, formData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                    },
+                    withCredentials: true,
+                })
+                .then((data) => {
+                    if (data) {
+                        navigate('/profile');
+                    }
+                });
         } catch (err) {}
     };
     return (
@@ -66,7 +69,7 @@ const Upload = () => {
                                 value={desc}
                             ></textarea>
                         </div>
-                        <div className="Tags">
+                        {/* <div className="Tags">
                             <label htmlFor="Tags">Tags</label>
                             <textarea
                                 name="Tags"
@@ -76,7 +79,7 @@ const Upload = () => {
                                 }}
                                 value={tag}
                             ></textarea>
-                        </div>
+                        </div> */}
                         <div className="Audioformat">
                             <label htmlFor="Audio format">Audio format</label>
                             <select
@@ -90,10 +93,10 @@ const Upload = () => {
                                 </option>
                                 <option value="mp3">mp3</option>
                                 <option value="wav">wav</option>
-                                <option value="flac">flac</option>
-                                <option value="aiff">aiff</option>
+                                {/* <option value="flac">flac</option> */}
+                                {/* <option value="aiff">aiff</option> */}
                                 <option value="ogg">ogg</option>
-                                <option value="asf">asf</option>
+                                {/* <option value="asf">asf</option> */}
                             </select>
                         </div>
                     </div>

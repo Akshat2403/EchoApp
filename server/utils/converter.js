@@ -40,7 +40,8 @@ export const youtubeConverter = async (
     return new Promise((resolve, reject) => {
         ytdl(youtubeURL, { quality: 'highestaudio' })
             .on('error', (err) => {
-                reject(err);
+                console.log('one');
+                reject(Error('Invalid link'));
             })
             .pipe(
                 fs
@@ -48,7 +49,7 @@ export const youtubeConverter = async (
                         __dirname + '/../assets/video/' + videoSource
                     )
                     .on('error', (err) => {
-                        reject(err);
+                        // throw err;
                     })
             )
             .on('finish', () => {
@@ -61,15 +62,17 @@ export const youtubeConverter = async (
                         fs.unlink(
                             __dirname + '/../assets/video/' + videoSource,
                             (err) => {
-                                if (err) console.log(err);
+                                // if (err) throw err;
                             }
                         );
                         resolve('done');
                     })
                     .on('error', (err) => {
-                        console.log(err);
-                        reject(err);
+                        // console.log(err);
+                        // throw err;
                     });
             });
+    }).catch((err) => {
+        throw Error('Invalid link');
     });
 };

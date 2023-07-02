@@ -6,6 +6,7 @@ import { dirname } from 'path';
 import createError from '../utils/error.js';
 import { v4 as uuidv4 } from 'uuid';
 import { title } from 'process';
+import { error } from 'console';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
@@ -13,8 +14,7 @@ const prisma = new PrismaClient();
 
 const createAudio = async (req, audioName) => {
     const reqID = req.params.uid;
-    const { tag, youtubeURL, ...details } = req.body;
-    const tags = [...tag];
+    const { youtubeURL, ...details } = req.body;
     const audio = await prisma.audio.create({
         data: {
             author: {
@@ -26,30 +26,30 @@ const createAudio = async (req, audioName) => {
             ...details,
         },
     });
-    if (tags) {
-        await Promise.all(
-            tags.map(
-                async (ele) =>
-                    await prisma.tag.upsert({
-                        where: { name: ele },
-                        update: {
-                            audio: {
-                                connect: { id: audio.id },
-                            },
-                        },
-                        create: {
-                            name: ele,
-                            audio: {
-                                connect: { id: audio.id },
-                            },
-                            createdBy: {
-                                connect: { id: reqID },
-                            },
-                        },
-                    })
-            )
-        );
-    }
+    // if (tags) {
+    //     await Promise.all(
+    //         tags.map(
+    //             async (ele) =>
+    //                 await prisma.tag.upsert({
+    //                     where: { name: ele },
+    //                     update: {
+    //                         audio: {
+    //                             connect: { id: audio.id },
+    //                         },
+    //                     },
+    //                     create: {
+    //                         name: ele,
+    //                         audio: {
+    //                             connect: { id: audio.id },
+    //                         },
+    //                         createdBy: {
+    //                             connect: { id: reqID },
+    //                         },
+    //                     },
+    //                 })
+    //         )
+    //     );
+    // }
     return audio;
 };
 export const getAudioAll = async (req, res, next) => {
@@ -133,16 +133,20 @@ export const addAudioYT = async (req, res, next) => {
     try {
         const audioName = `${uuidv4()}`;
         const VideoSource = uuidv4();
-        await youtubeConverter(
+        console.log(req.body);
+        const res = await youtubeConverter(
             req.body.youtubeURL,
             req.body.format,
             audioName,
             `${VideoSource}.mp4`
-        );
+        ).catch((error) => {
+            throw error;
+        });
         const audio = await createAudio(req, audioName);
+        console.log('one');
         res.status(201).json(audio);
     } catch (err) {
-        next(err);
+        return next(createError(404, err));
     }
 };
 export const deleteAudio = async (req, res, next) => {
@@ -153,7 +157,10 @@ export const deleteAudio = async (req, res, next) => {
         },
     });
     fs.unlink(
-        `${__dirname}/../assets/audio/${audioinfo.url}.${audioinfo.format}`
+        `${__dirname}/../assets/audio/${audioinfo.url}.${audioinfo.format}`,
+        (err) => {
+            if (err) console.log(err);
+        }
     );
     const audio = await prisma.audio.delete({
         where: {

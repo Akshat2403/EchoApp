@@ -2,6 +2,7 @@ import styles from '../../assets/styles/login_signup.module.css';
 import logo from '../../assets/images/logo.svg';
 import { useState } from 'react';
 import Axios from '../../features/axios/axios';
+import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 export const Login = () => {
@@ -12,7 +13,7 @@ export const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await Axios.post(
+            const response = await axios.post(
                 '/login',
                 JSON.stringify({ email, password }),
                 {

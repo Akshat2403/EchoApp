@@ -6,6 +6,7 @@ import Backwardbtn from '../../assets/images/backward.svg';
 import Forwardbtn from '../../assets/images/forward.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { togglePlaying, toggletime } from '../../features/store/playerReducer';
+import { toast } from 'react-toastify';
 const Audiocontroller = ({ data, audioRef, progressBar }) => {
     const dispatch = useDispatch();
     const { playing, time } = useSelector((state) => state.Player);
@@ -13,10 +14,13 @@ const Audiocontroller = ({ data, audioRef, progressBar }) => {
     const animationRef = useRef(); // reference the animation
 
     useEffect(() => {
+        console.log(audioRef.current.duration);
         const seconds = Math.floor(audioRef.current.duration);
-        setDuration(seconds);
-        progressBar.current.max = seconds;
-    }, [audioRef?.current?.loadedmetadata, audioRef?.current?.readyState]);
+        if (!isNaN(seconds)) {
+            setDuration(seconds);
+            progressBar.current.max = seconds;
+        }
+    }, [audioRef?.current?.duration, audioRef?.current?.readyState]);
 
     const calculateTime = (secs) => {
         const minutes = Math.floor(secs / 60);
@@ -119,7 +123,7 @@ const Audiocontroller = ({ data, audioRef, progressBar }) => {
 
                         {/* duration */}
                         <div className={styles.duration}>
-                            {duration &&
+                            {'0:00' &&
                                 !isNaN(duration) &&
                                 calculateTime(duration)}
                         </div>
