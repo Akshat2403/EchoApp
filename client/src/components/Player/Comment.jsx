@@ -14,7 +14,8 @@ const Comment = ({ audioRef, progressBar }) => {
     const [comment, setComment] = useState('');
     const [timesec, setTimesec] = useState(null);
     const [timemin, setTimemin] = useState(null);
-    const [expand, setExpand] = useState(false);
+    const [expandcomment, setExpandcomment] = useState(false);
+
     const { id } = useParams();
     const { playing } = useSelector((state) => state.Player);
     const { data } = useFetch(`/comment/${id}/`);
@@ -32,6 +33,7 @@ const Comment = ({ audioRef, progressBar }) => {
             dispatch(toggletime(timestamp));
             if (!playing) {
                 dispatch(togglePlaying());
+                audioRef.current.play();
             }
         }
     };
@@ -67,108 +69,137 @@ const Comment = ({ audioRef, progressBar }) => {
                 }
             }
         } catch (err) {
-            // console.log(err);
             toast(err.response.data);
         }
     };
     return (
         <>
             {data && (
-                <div className={styles.comment_section}>
-                    <div className={styles.comment_box}>
-                        <div className={styles.header}>
-                            <div className={styles.header_left}>
-                                <div>Comments</div>
-                                <div>{data.comments.length}</div>
+                <>
+                    <div className={styles.comment_section}>
+                        <div className={styles.comment_box}>
+                            <div className={styles.header}>
+                                <div className={styles.header_left}>
+                                    <div>Comments</div>
+                                    <div>{data.comments.length}</div>
+                                </div>
+                                <div>
+                                    <img
+                                        src={down}
+                                        alt=""
+                                        className={
+                                            expandcomment
+                                                ? styles.uparrow
+                                                : styles.downarrow
+                                        }
+                                        onClick={(e) =>
+                                            setExpandcomment(!expandcomment)
+                                        }
+                                    />
+                                </div>
                             </div>
-                            <div>
-                                <img
-                                    src={down}
-                                    alt=""
-                                    className={
-                                        expand
-                                            ? styles.uparrow
-                                            : styles.downarrow
-                                    }
-                                    onClick={(e) => setExpand(!expand)}
-                                />
-                            </div>
-                        </div>
-                        <form className={styles.form} onSubmit={handleSubmit}>
-                            <input
-                                type="text"
-                                className={styles.inputbox}
-                                placeholder="Add a comment..."
-                                value={comment}
-                                onChange={(e) => {
-                                    setComment(e.target.value);
-                                }}
-                                required
-                            />
-                            <div
-                                className={styles.inputbox}
-                                style={{
-                                    padding: 0,
-                                    paddingLeft: '15px',
-                                    width: '80px',
-                                }}
+                            <form
+                                className={styles.form}
+                                onSubmit={handleSubmit}
                             >
                                 <input
                                     type="text"
-                                    className={styles.inputtime}
-                                    value={timemin}
-                                    pattern="\d{1,2}"
-                                    placeholder="00"
+                                    className={styles.inputbox}
+                                    placeholder="Add a comment..."
+                                    value={comment}
                                     onChange={(e) => {
-                                        setTimemin(e.target.value);
+                                        setComment(e.target.value);
                                     }}
+                                    required
                                 />
-                                :
-                                <input
-                                    type="text"
-                                    className={styles.inputtime}
-                                    value={timesec}
-                                    placeholder="00"
-                                    pattern="\d{1,2}"
-                                    max="59"
-                                    onChange={(e) => {
-                                        setTimesec(e.target.value);
+                                <div
+                                    className={styles.inputbox}
+                                    style={{
+                                        padding: 0,
+                                        paddingLeft: '15px',
+                                        width: '80px',
                                     }}
-                                />
-                            </div>
-                            <button type="submit" className={styles.button}>
-                                Post
-                            </button>
-                        </form>
-                        {data.comments.map((comment) => (
-                            <div className={styles.comments} key={comment.id}>
-                                <div className={styles.message}>
-                                    <img src={userlogo} alt=""></img>
-                                    <div className={styles.comment_unique}>
-                                        <div className={styles.author}>
-                                            {comment.author.name}
+                                >
+                                    <input
+                                        type="text"
+                                        className={styles.inputtime}
+                                        value={timemin}
+                                        pattern="\d{1,2}"
+                                        placeholder="00"
+                                        onChange={(e) => {
+                                            setTimemin(e.target.value);
+                                        }}
+                                    />
+                                    :
+                                    <input
+                                        type="text"
+                                        className={styles.inputtime}
+                                        value={timesec}
+                                        placeholder="00"
+                                        pattern="\d{1,2}"
+                                        max="59"
+                                        onChange={(e) => {
+                                            setTimesec(e.target.value);
+                                        }}
+                                    />
+                                </div>
+                                <button type="submit" className={styles.button}>
+                                    Post
+                                </button>
+                            </form>
+                            <div
+                                style={
+                                    expandcomment
+                                        ? { display: 'block' }
+                                        : { display: 'none' }
+                                }
+                            >
+                                {data.comments.map((comment) => (
+                                    <div
+                                        className={styles.comments}
+                                        key={comment.id}
+                                    >
+                                        <div className={styles.message}>
+                                            <img src={userlogo} alt=""></img>
+                                            <div
+                                                className={
+                                                    styles.comment_unique
+                                                }
+                                            >
+                                                <div className={styles.author}>
+                                                    {comment.author.name}
+                                                </div>
+                                                <div
+                                                    className={
+                                                        styles.comment_desc
+                                                    }
+                                                >
+                                                    {comment.desc}
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div className={styles.comment_desc}>
-                                            {comment.desc}
+
+                                        <div
+                                            className={styles.comment_time}
+                                            onClick={(e) =>
+                                                handleChange(
+                                                    e,
+                                                    comment.timestamp
+                                                )
+                                            }
+                                        >
+                                            {Math.floor(comment.timestamp / 60)}
+                                            :
+                                            {comment.timestamp % 60 < 10
+                                                ? '0' + (comment.timestamp % 60)
+                                                : comment.timestamp % 60}
                                         </div>
                                     </div>
-                                </div>
-
-                                <div
-                                    className={styles.comment_time}
-                                    onClick={(e) =>
-                                        handleChange(e, comment.timestamp)
-                                    }
-                                >
-                                    {Math.floor(comment.timestamp / 60)}:
-                                    {comment.timestamp % 60 < 10
-                                        ? '0' + (comment.timestamp % 60)
-                                        : comment.timestamp % 60}
-                                </div>
+                                ))}
                             </div>
-                        ))}
+                        </div>
                     </div>
-                </div>
+                </>
             )}
         </>
     );

@@ -31,7 +31,6 @@ app.use('/audio', audioRoutes);
 app.use('/comment', commentRoutes);
 app.use('', userRoutes);
 app.use((err, req, res, next) => {
-    console.log('sdaf');
     const status = err.code || 500;
     const msg = err.message || 'Something went wrong';
     return res.status(status).json({

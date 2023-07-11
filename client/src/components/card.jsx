@@ -12,6 +12,7 @@ const Card = () => {
             await axios.delete(`/audio/${User.id}/${id}`, {
                 withCredentials: true,
             });
+            window.location.reload();
         } catch (err) {
             toast(err);
             toast(err.response.data.message);

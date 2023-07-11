@@ -22,7 +22,6 @@ export const getAudioComments = async (req, res, next) => {
 };
 export const addComment = async (req, res, next) => {
     try {
-        console.log(req.body);
         const audioID = req.params.id;
         const userID = req.params.uid;
         const comment = await prisma.audio.update({

@@ -41,6 +41,7 @@ model audio {
   authorID    String
   title       String
   description String?
+  transcript  String?
   format      String
   url         String
   tags        tag[]

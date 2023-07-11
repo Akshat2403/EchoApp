@@ -35,15 +35,12 @@ const UploadYt = () => {
                     }
                 )
                 .then((data) => {
-                    console.log(data);
-
                     if (data) {
                         navigate('/profile');
                     }
                 });
         } catch (err) {
-            console.log('one');
-            toast(err.response.data.message);
+            toast(err);
         }
     };
     return (

@@ -14,6 +14,7 @@ Echo is a powerful web application that enables users to convert video files or 
 - Enhanced Audio Playback Control: Effortlessly Navigate 5 Seconds Forward, Backward, Play, Pause, and Track Progress with Progress Bar Controls
 - User Registration/Authentication: Empowers users to sign up or log in, granting them the ability to upload audio files.
 - Notification : The notification feature in Echo is designed to display error messages whenever an error occurs.(Used React Toastify)
+- Transcription : Each Audio has its transcript generated using by AssemblyAI (Currently Limited to English)
 
 ---
 
@@ -45,8 +46,6 @@ To run this project, you will need to add the following environment variables to
 
 `JWT_SECRETKEY`:`JWT_SECRETKEY`
 
-`PORT`:`Open Port for the Server (default:5000)`
-
 Migrate the Schema
 
 ```bash
@@ -57,15 +56,14 @@ Migrate the Schema
   npx prisma migrate dev
 ```
 
-Setup Proxy
-
-In the client/package.json update proxy
-
-Start the app
-
-Ensure you are in EchoApp folder
+Run
 
 ```bash
+  cd ..
+```
+
+```bash
+
   yarn dev
 ```
 
@@ -83,6 +81,7 @@ Open your web browser and visit http://localhost:3000 to access Echo.
 - Pause: To pause the audio playback, click the pause button.
 - Play: To resume playback after pausing, click the play button.
 - Comment: If you want to add a comment to a specific timestamp in the audio, click the comment button. This will allow you to provide feedback, ask questions, or engage in discussions related to the audio content.
+- Transcript : If you want to read the Transcript on the click on the arrow in the transcript section
 
 4. Sign Up for a account
 
@@ -104,6 +103,7 @@ Open your web browser and visit http://localhost:3000 to access Echo.
 - Complete any additional fields or settings required, such as specifying the desired output format or adjusting audio quality.
 - Once you have filled in all the necessary details, initiate the upload process.
 - The video will be converted to audio based on the provided settings, and the audio file will be generated.
+- On completion you will redirected to your profile page
 
 7. To comment on an audio file in Echo, please follow these steps:
 
@@ -118,11 +118,13 @@ Open your web browser and visit http://localhost:3000 to access Echo.
 - Click on the timestamp to initiate navigation.
 - The audio playback will automatically jump to the selected timestamp, allowing you to listen to the audio from that specific point.
 
-9.
-
 ---
 
 ## Screenshots
+
+#### Home
+
+![Home](https://github.com/Akshat2403/EchoApp/assets/95174507/4cb999ac-8079-46f9-8730-4b500c144b1d)
 
 #### Login Screen
 
@@ -130,11 +132,15 @@ Open your web browser and visit http://localhost:3000 to access Echo.
 
 #### SignUp Screen
 
-![SignUp](https://github.com/Akshat2403/EchoApp/assets/95174507/486f5366-55bb-4cd5-b37a-4ee13fd90195)
+![SignUp](https://github.com/Akshat2403/EchoApp/assets/95174507/05f9b896-f137-4fb9-9c15-0c79efb460a0)
+
+#### Profile Screen
+
+![Profile](https://github.com/Akshat2403/EchoApp/assets/95174507/9faca16d-f363-448d-a42c-e04c7e9dcc5c)
 
 #### Audio Player Screen
 
-![Player](https://github.com/Akshat2403/EchoApp/assets/95174507/44913d92-604a-4eaf-86a2-1a2c0bdc4d67)
+![Player](https://github.com/Akshat2403/EchoApp/assets/95174507/b529457f-6841-489c-a933-c0ac962239ed)
 
 #### Upload Screen
 

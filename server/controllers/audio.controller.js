@@ -1,20 +1,23 @@
 import { PrismaClient } from '@prisma/client';
 import { uploadConverter, youtubeConverter } from '../utils/converter.js';
+import transcribe from '../utils/transcript.js';
 import { fileURLToPath } from 'url';
 import fs from 'fs';
 import { dirname } from 'path';
 import createError from '../utils/error.js';
 import { v4 as uuidv4 } from 'uuid';
-import { title } from 'process';
-import { error } from 'console';
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const prisma = new PrismaClient();
 
 const createAudio = async (req, audioName) => {
+
     const reqID = req.params.uid;
     const { youtubeURL, ...details } = req.body;
+    const transcript = await transcribe(audioName, req.body.format);
+    const text = transcript.text;
     const audio = await prisma.audio.create({
         data: {
             author: {
@@ -23,6 +26,7 @@ const createAudio = async (req, audioName) => {
                 },
             },
             url: audioName,
+            transcript: text,
             ...details,
         },
     });
@@ -59,8 +63,6 @@ export const getAudioAll = async (req, res, next) => {
             if (req.query.search == null) {
                 audio = null;
             } else {
-                console.log(req.query);
-
                 audio = await prisma.audio.findMany({
                     where: {
                         OR: [
@@ -133,8 +135,7 @@ export const addAudioYT = async (req, res, next) => {
     try {
         const audioName = `${uuidv4()}`;
         const VideoSource = uuidv4();
-        console.log(req.body);
-        const res = await youtubeConverter(
+        const result = await youtubeConverter(
             req.body.youtubeURL,
             req.body.format,
             audioName,
@@ -143,7 +144,6 @@ export const addAudioYT = async (req, res, next) => {
             throw error;
         });
         const audio = await createAudio(req, audioName);
-        console.log('one');
         res.status(201).json(audio);
     } catch (err) {
         return next(createError(404, err));
@@ -151,11 +151,11 @@ export const addAudioYT = async (req, res, next) => {
 };
 export const deleteAudio = async (req, res, next) => {
     const reqID = req.params.id;
-    const audioinfo = await prisma.audio.findUnique({
-        where: {
-            id: reqID,
-        },
-    });
+        const audioinfo = await prisma.audio.findUnique({
+            where: {
+                id: reqID,
+            },
+        });
     fs.unlink(
         `${__dirname}/../assets/audio/${audioinfo.url}.${audioinfo.format}`,
         (err) => {

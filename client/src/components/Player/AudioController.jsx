@@ -12,9 +12,7 @@ const Audiocontroller = ({ data, audioRef, progressBar }) => {
     const { playing, time } = useSelector((state) => state.Player);
     const [duration, setDuration] = useState(0);
     const animationRef = useRef(); // reference the animation
-
     useEffect(() => {
-        console.log(audioRef.current.duration);
         const seconds = Math.floor(audioRef.current.duration);
         if (!isNaN(seconds)) {
             setDuration(seconds);
@@ -31,7 +29,6 @@ const Audiocontroller = ({ data, audioRef, progressBar }) => {
     };
 
     const togglePlayPause = () => {
-        console.log(playing);
         const prevValue = playing;
         dispatch(togglePlaying());
         if (!prevValue) {

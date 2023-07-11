@@ -40,7 +40,6 @@ export const youtubeConverter = async (
     return new Promise((resolve, reject) => {
         ytdl(youtubeURL, { quality: 'highestaudio' })
             .on('error', (err) => {
-                console.log('one');
                 reject(Error('Invalid link'));
             })
             .pipe(
@@ -62,7 +61,7 @@ export const youtubeConverter = async (
                         fs.unlink(
                             __dirname + '/../assets/video/' + videoSource,
                             (err) => {
-                                // if (err) throw err;
+                                console.log(err);
                             }
                         );
                         resolve('done');
